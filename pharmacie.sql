@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le : ven. 12 juil. 2024 à 14:25
+-- Généré le : ven. 12 juil. 2024 à 16:04
 -- Version du serveur : 10.4.27-MariaDB
 -- Version de PHP : 8.2.0
 
@@ -46,7 +46,8 @@ CREATE TABLE `medicament` (
   `nom` varchar(250) NOT NULL,
   `categorie` varchar(250) NOT NULL,
   `nombre` int(10) NOT NULL,
-  `ordonance` varchar(6) NOT NULL
+  `ordonance` varchar(6) NOT NULL,
+  `photo` varchar(250) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
