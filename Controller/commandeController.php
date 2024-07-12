@@ -1,2 +1,2 @@
 <?php
-require '../Model/commandeModel.php';
+require_once '../Model/commandeModel.php';

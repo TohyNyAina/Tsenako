@@ -1,15 +1,21 @@
 <?php
-
-session_start();
-
-class Connection{
-    public $host = "localhost";
-    public $user = "root";
-    public $password = "";
-    public $db_name = "pharmacie";
-    public $conn;
-
+class DB{
+    private $host = "localhost";
+    private $user = "root";
+    private $pass = "";
+    private $dbname = "pharmacie";
+    public $ds;
     public function __construct(){
-        $this->conn = mysqli_connect($this->host, $this->user, $this->password, $this->db_name);
+        $dsn = 'mysql:host=' . $this->host . ';dbname=' . $this->dbname.';charset=utf8';
+        $options = array (
+            PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION 
+        );
+        try {
+            $this->ds = new PDO($dsn,$this->user,$this->pass,$options);
+        }catch(PDOException $e){
+            echo $e->getMessage();
+        }
     }
+
 }
+?>

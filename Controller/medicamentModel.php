@@ -1,2 +1,2 @@
 <?php
-require '../Model/medicamentModel.php';
+require_once '../Model/medicamentModel.php';
