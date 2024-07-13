@@ -25,8 +25,8 @@
         <div class="form-group">
             <label for="ordonance">Ordonance:</label>
             <select id="ordonance" name="ordonance" class="form-control">
-                <option value="1">Non Obligatoire</option>
-                <option value="0">Obligatoire</option>
+                <option value="0">Non Obligatoire</option>
+                <option value="1">Obligatoire</option>
             </select>
         </div>
         <div class="form-group">

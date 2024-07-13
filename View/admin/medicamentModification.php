@@ -9,7 +9,7 @@
 <div class="container mt-5">
     <h1 class="text-center mb-5">Modifier un Médicament</h1>
     <a href="../../MVC-Pharmacie/Controller/medicamentController.php?action=lister" class="btn btn-success mb-4">Revenir à la liste des medicaments</a>
-    <form action="../../Controller/medicamentController.php?action=modifier&id=<?php echo htmlspecialchars($medicament['id']); ?>" method="post" enctype="multipart/form-data">
+    <form action="../../MVC-Pharmacie/Controller/medicamentController.php?action=modifier&id=<?php echo htmlspecialchars($medicament['id']); ?>" method="post" enctype="multipart/form-data">
         <input type="hidden" name="id" value="<?php echo htmlspecialchars($medicament['id']); ?>">
         <div class="form-group">
             <label for="nom">Nom:</label>
@@ -26,8 +26,8 @@
         <div class="form-group">
             <label for="ordonance">Ordonance:</label>
             <select id="ordonance" name="ordonance" class="form-control">
-                <option value="1" <?php if ($medicament['ordonance'] == 1) echo 'selected'; ?>>Non Obligatoire</option>
-                <option value="0" <?php if ($medicament['ordonance'] == 0) echo 'selected'; ?>>Obligatoire</option>
+                <option value="0" <?php if ($medicament['ordonance'] == 0) echo 'selected'; ?>>Non Obligatoire</option>
+                <option value="1" <?php if ($medicament['ordonance'] == 1) echo 'selected'; ?>>Obligatoire</option>
             </select>
         </div>
         <div class="form-group">
