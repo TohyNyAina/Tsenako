@@ -8,6 +8,7 @@
 <body>
 <div class="container mt-5">
     <h1 class="text-center mb-5">Modifier un Médicament</h1>
+    <a href="../../MVC-Pharmacie/Controller/medicamentController.php?action=lister" class="btn btn-success mb-4">Revenir à la liste des medicaments</a>
     <form action="../../Controller/medicamentController.php?action=modifier&id=<?php echo htmlspecialchars($medicament['id']); ?>" method="post" enctype="multipart/form-data">
         <input type="hidden" name="id" value="<?php echo htmlspecialchars($medicament['id']); ?>">
         <div class="form-group">
