@@ -8,7 +8,7 @@ class MedicamentController {
         $this->model = new MedicamentModel();
     }
 
-    public function inserer($nom, $categorie, $nombre, $ordonance, $photo) {
+    public function inserer($nom, $prix, $categorie, $nombre, $ordonance, $photo) {
         // Gestion de l'upload de la photo
         $photoName = '';
         if ($photo['name']) {
@@ -17,10 +17,10 @@ class MedicamentController {
             $targetFilePath = $targetDir . $photoName;
             move_uploaded_file($photo["tmp_name"], $targetFilePath);
         }
-        return $this->model->inserer($nom, $categorie, $nombre, $ordonance, $photoName);
+        return $this->model->inserer($nom, $prix, $categorie, $nombre, $ordonance, $photoName);
     }
 
-    public function modifier($nom, $categorie, $nombre, $ordonance, $photo, $id) {
+    public function modifier($nom, $prix, $categorie, $nombre, $ordonance, $photo, $id) {
         // Gestion de l'upload de la photo
         $photoName = '';
         if ($photo['name']) {
@@ -29,7 +29,7 @@ class MedicamentController {
             $targetFilePath = $targetDir . $photoName;
             move_uploaded_file($photo["tmp_name"], $targetFilePath);
         }
-        return $this->model->modifier($nom, $categorie, $nombre, $ordonance, $photoName, $id);
+        return $this->model->modifier($nom, $prix, $categorie, $nombre, $ordonance, $photoName, $id);
     }
 
     public function supprimer($id) {
@@ -51,11 +51,11 @@ $controller = new MedicamentController();
 
 switch ($action) {
     case 'inserer':
-        $controller->inserer($_POST['nom'], $_POST['categorie'], $_POST['nombre'], $_POST['ordonance'], $_FILES['photo']);
+        $controller->inserer($_POST['nom'], $_POST['prix'], $_POST['categorie'], $_POST['nombre'], $_POST['ordonance'], $_FILES['photo']);
         header('Location: ../Controller/medicamentController.php?action=lister');
         break;
     case 'modifier':
-        $controller->modifier($_POST['nom'], $_POST['categorie'], $_POST['nombre'], $_POST['ordonance'], $_FILES['photo'], $_POST['id']);
+        $controller->modifier($_POST['nom'], $_POST['prix'], $_POST['categorie'], $_POST['nombre'], $_POST['ordonance'], $_FILES['photo'], $_POST['id']);
         header('Location: ../Controller/medicamentController.php?action=lister');
         break;
     case 'supprimer':

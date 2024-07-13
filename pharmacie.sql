@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le : ven. 12 juil. 2024 à 16:04
+-- Généré le : sam. 13 juil. 2024 à 12:06
 -- Version du serveur : 10.4.27-MariaDB
 -- Version de PHP : 8.2.0
 
@@ -44,11 +44,19 @@ CREATE TABLE `commande` (
 CREATE TABLE `medicament` (
   `id` int(11) NOT NULL,
   `nom` varchar(250) NOT NULL,
+  `prix` int(10) NOT NULL,
   `categorie` varchar(250) NOT NULL,
   `nombre` int(10) NOT NULL,
   `ordonance` varchar(6) NOT NULL,
   `photo` varchar(250) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Déchargement des données de la table `medicament`
+--
+
+INSERT INTO `medicament` (`id`, `nom`, `prix`, `categorie`, `nombre`, `ordonance`, `photo`) VALUES
+(2, 'Paracetamole', 2000, 'Pilule', 2, '1', '1.png');
 
 -- --------------------------------------------------------
 
@@ -100,7 +108,7 @@ ALTER TABLE `commande`
 -- AUTO_INCREMENT pour la table `medicament`
 --
 ALTER TABLE `medicament`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT pour la table `utilisateur`

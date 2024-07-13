@@ -16,6 +16,10 @@
             <input type="text" id="nom" name="nom" class="form-control" value="<?php echo htmlspecialchars($medicament['nom']); ?>">
         </div>
         <div class="form-group">
+            <label for="prix">Prix en Ariary:</label>
+            <input type="number" id="prix" name="prix" class="form-control" value="<?php echo htmlspecialchars($medicament['prix']); ?>">
+        </div>
+        <div class="form-group">
             <label for="categorie">Catégorie:</label>
             <input type="text" id="categorie" name="categorie" class="form-control" value="<?php echo htmlspecialchars($medicament['categorie']); ?>">
         </div>

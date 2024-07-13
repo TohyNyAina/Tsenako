@@ -13,6 +13,7 @@
         <thead>
             <tr>
                 <th>Nom</th>
+                <th>Prix en Ariary</th>
                 <th>Catégorie</th>
                 <th>Nombre</th>
                 <th>Ordonance</th>
@@ -25,6 +26,7 @@
                 <?php foreach ($medicaments as $medicament): ?>
                 <tr>
                     <td><?php echo htmlspecialchars($medicament['nom']); ?></td>
+                    <td><?php echo htmlspecialchars($medicament['prix']); ?> Ar</td>
                     <td><?php echo htmlspecialchars($medicament['categorie']); ?></td>
                     <td><?php echo htmlspecialchars($medicament['nombre']); ?></td>
                     <td><?php echo htmlspecialchars($medicament['ordonance']); ?></td>
