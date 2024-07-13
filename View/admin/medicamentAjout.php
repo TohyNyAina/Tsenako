@@ -4,12 +4,28 @@
     <meta charset="UTF-8">
     <title>Ajouter un Médicament</title>
     <link href="../../../MVC-Pharmacie/assets/css/bootstrap.css" rel="stylesheet">
+    <script>
+        function validateForm() {
+            var nom = document.getElementById('nom').value;
+            var prix = document.getElementById('prix').value;
+            var categorie = document.getElementById('categorie').value;
+            var nombre = document.getElementById('nombre').value;
+            var ordonance = document.getElementById('ordonance').value;
+            var photo = document.getElementById('photo').value;
+
+            if (nom == "" || prix == "" || categorie == "" || nombre == "" || ordonance == "" || photo == "") {
+                alert("Veuillez remplir tous les champs.");
+                return false;
+            }
+            return true;
+        }
+    </script>
 </head>
 <body>
 <div class="container mt-5">
     <h1 class="text-center mb-5">Ajouter un Médicament</h1>
     <a href="../../MVC-Pharmacie/Controller/medicamentController.php?action=lister" class="btn btn-success mb-4">Revenir à la liste des medicaments</a>
-    <form action="../../MVC-Pharmacie/Controller/medicamentController.php?action=inserer" method="post" enctype="multipart/form-data">
+    <form action="../../MVC-Pharmacie/Controller/medicamentController.php?action=inserer" method="post" enctype="multipart/form-data" onsubmit="return validateForm()">
         <div class="form-group">
             <label for="nom">Nom:</label>
             <input type="text" id="nom" name="nom" class="form-control">

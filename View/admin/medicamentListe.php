@@ -4,6 +4,14 @@
     <meta charset="UTF-8">
     <title>Liste des Médicaments</title>
     <link href="../../../MVC-Pharmacie/assets/css/bootstrap.css" rel="stylesheet">
+    <script>
+        function confirmDeletion(event, url) {
+            event.preventDefault();
+            if (confirm("Voulez-vous vraiment supprimer cet article ?")) {
+                window.location.href = url;
+            }
+        }
+    </script>
 </head>
 <body>
 <div class="container mt-5">
@@ -37,13 +45,13 @@
                     </td>
                     <td>
                         <a href="../../MVC-Pharmacie/Controller/medicamentController.php?action=edit&id=<?php echo $medicament['id']; ?>" class="btn btn-warning">Modifier</a>
-                        <a href="../../MVC-Pharmacie/Controller/medicamentController.php?action=supprimer&id=<?php echo $medicament['id']; ?>" class="btn btn-danger">Supprimer</a>
+                        <a href="#" onclick="confirmDeletion(event, '../../MVC-Pharmacie/Controller/medicamentController.php?action=supprimer&id=<?php echo $medicament['id']; ?>')" class="btn btn-danger">Supprimer</a>
                     </td>
                 </tr>
                 <?php endforeach; ?>
             <?php else: ?>
                 <tr>
-                    <td colspan="6" class="text-center">Aucun médicament trouvé.</td>
+                    <td colspan="7" class="text-center">Aucun médicament trouvé.</td>
                 </tr>
             <?php endif; ?>
         </tbody>
