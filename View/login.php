@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Inscription</title>
-    <link href="../../MVC-Pharmacie/assets/css/bootstrap.css" rel="stylesheet">
+    <link href="../../MVC-Pharmacie/assets/css/login.css" rel="stylesheet">
     <script>
         function validateForm() {
             var role = document.getElementById('role').value;
@@ -19,24 +19,27 @@
     </script>
 </head>
 <body>
-<div class="container mt-5">
-    <h1 class="text-center mb-5">Connexion</h1>
-    <a href="../Controller/utilisateurController.php?action=prem" class="btn btn-success mb-4">Revenir à la liste des medicaments</a>
+<div id="rehetra">
+    <h1>Connexion</h1>
+    <!-- <a href="../Controller/utilisateurController.php?action=prem" class="btn btn-success mb-4">Revenir à la liste des medicaments</a> -->
     <form action="../Controller/utilisateurController.php?action=Connexion" method="post" enctype="multipart/form-data" onsubmit="return validateForm()">
-        <div class="form-group">
-            <label for="nom">Role:</label>
-            <input type="text" id="role" name="role" class="form-control">
-        </div>
-        <div class="form-group">
-            <label for="prix">Email:</label>
-            <input type="email" id="email" name="email" class="form-control">
-        </div>
-        <div class="form-group">
-            <label for="categorie">Password:</label>
-            <input type="password" id="password" name="password" class="form-control">
-        </div>
-        <button type="submit" class="btn btn-primary">Se Connecter</button>
-    </form>
+    <div class="boite">
+         <input type="email" name="email" class="case" required>
+          <label for="nom">Adresse Email</label>
+    </div>
+    <div class="boite">
+          <input type="password" name="mdp" class="case" required>
+          <label for="passe">Mot de passe</label>
+    </div>
+            <div class="seconnecter">
+               <input type="submit" value="Se connecter" class="btn" id="btn">
+            </div>
+
+        </form>
+             <div class="sinscrire">
+                <a href="register.php"><input type="submit" value="S'inscrire" class="btn"></a>
+            </div>
+    
 </div>
 </body>
 </html>

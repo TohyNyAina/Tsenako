@@ -1,0 +1,86 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+body{
+    background-image: url('../../uploads/background3.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 100vh;
+
+    
+    /* position: absolute; */
+    left: 50%;
+    top: 35%;
+    /* transform: translate(-50%,-50%);  */
+}
+.formulaire{
+    margin-left: 500px;
+}
+h1{
+    color: solid rgba(0, 0, 0, 0.7);
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 30px;
+    text-align: center;
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
+}
+
+
+.nom{
+
+    position: relative;
+    margin: 10px;
+}
+.nom input{
+    border: 0;
+    background: transparent;
+    border-bottom: 2px solid rgba(0, 0, 0, 0.7) ;
+    outline: none;
+    height: 50px;
+    width: 300px;
+    color: white;
+}
+.nom :focus,
+.nom :valid{
+    border-bottom-color:solid rgba(0, 0, 0, 0.7); ;
+}
+label{
+    position: absolute;
+    top: 15px;
+    left: 0;
+    z-index: -1;
+    color: solid rgba(0, 0, 0, 0.7);
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 20px ;
+}
+.nom input:focus + label,
+.nom input:valid + label{
+    transform: translateY(-30px);
+    font-size: 1.3rem;
+    transition: all 1.2s ease;
+    
+
+}
+.btn{
+    background: none;
+    border-bottom: solid rgba(0, 0, 0, 0.7) 2px;
+    color: solid rgba(0, 0, 0, 0.7);
+    font-family: 'Times New Roman', Times, serif;
+    cursor: pointer;
+    transition: all 0.5s ease;
+    font-size: 20px;
+    border-radius: 20px;
+    padding: 10px 30px;
+    margin-left:100px ; 
+    margin-top: 30px;
+
+}
+.btn:hover{
+    background-color: rgba(0, 0, 0, 0.7);
+    border: none;
+    color: antiquewhite;
+}
