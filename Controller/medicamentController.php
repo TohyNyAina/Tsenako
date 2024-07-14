@@ -37,11 +37,22 @@ class MedicamentController {
     }
 
     public function lister() {
-        return $this->model->lister();
+        $medicaments = $this->model->lister();
+        if ($this->isAjaxRequest()) {
+            header('Content-Type: application/json');
+            echo json_encode($medicaments);
+            exit;
+        } else {
+            return $medicaments;
+        }
     }
 
     public function findMedicamentById($id) {
         return $this->model->findMedicamentById($id);
+    }
+
+    private function isAjaxRequest() {
+        return isset($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) === 'xmlhttprequest';
     }
 }
 
@@ -52,15 +63,15 @@ $controller = new MedicamentController();
 switch ($action) {
     case 'inserer':
         $controller->inserer($_POST['nom'], $_POST['prix'], $_POST['categorie'], $_POST['nombre'], $_POST['ordonance'], $_FILES['photo']);
-        header('Location: ../Controller/medicamentController.php?action=lister');
+        header('Location: ../../MVC-Pharmacie/Controller/medicamentController.php?action=lister');
         break;
     case 'modifier':
         $controller->modifier($_POST['nom'], $_POST['prix'], $_POST['categorie'], $_POST['nombre'], $_POST['ordonance'], $_FILES['photo'], $_POST['id']);
-        header('Location: ../Controller/medicamentController.php?action=lister');
+        header('Location: ../../MVC-Pharmacie/Controller/medicamentController.php?action=lister');
         break;
     case 'supprimer':
         $controller->supprimer($_GET['id']);
-        header('Location: ../Controller/medicamentController.php?action=lister');
+        header('Location: ../../MVC-Pharmacie/Controller/medicamentController.php?action=lister');
         break;
     case 'edit':
         $medicament = $controller->findMedicamentById($_GET['id']);
@@ -75,5 +86,4 @@ switch ($action) {
         include '../View/admin/medicamentAjout.php';
         break;
 }
-
 ?>
