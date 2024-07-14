@@ -1,5 +1,9 @@
 <?php 
-include_once '../MVC-Pharmacie/View/layout/client/clientNavbar.php'
+include_once '../MVC-Pharmacie/View/layout/client/clientNavbar.php';
+?>
+
+<?php
+include_once '../MVC-Pharmacie/View/client/acceuil.php';
 ?>
 
     <!-- Troisieme section ou il y a les produits-->
