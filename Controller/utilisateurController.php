@@ -40,7 +40,7 @@ class UtilisateurController {
     public function deconnecter() {
         session_start();
         session_destroy();
-        header('Location: ../../MVC-Pharmacie/View/login.php?success=logout');
+        header('Location: ../../MVC-Pharmacie/index.php?success=logout');
         exit();
     }
 

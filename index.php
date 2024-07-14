@@ -1,5 +1,5 @@
 <?php
-include_once '../MVC-Pharmacie/View/layout/client/clientNavbar.php';
+include_once '../MVC-Pharmacie/View/layout/nav.php';
 ?>
 
 <?php
@@ -131,7 +131,7 @@ include_once '../MVC-Pharmacie/View/client/acceuil.php';
                         html += '<h3 class="text-xl font-bold text-gray-800 mb-4">' + medicament.nom + '</h3>';
                         html += '<p class="text-gray-600 mb-4">' + medicament.prix + ' Ar</p>';
                         html += '<div class="flex justify-between">';
-                        html += '<a href="' + medicament.id + 'class="btn bg-green-500 hover:bg-green-600 text-white py-2 px-4 rounded mb-4">Ajouter au panier</a>';
+                        html += '<a href="../../../MVC-Pharmacie/View/login.php"' + medicament.id + '"class="btn bg-green-500 hover:bg-green-600 text-white py-2 px-4 rounded mb-4">Veuillez vous connecter</a>';
                         html += '</div>';
                         html += '</div>';
                     });
