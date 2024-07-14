@@ -26,13 +26,13 @@
         <div class="formulaire">
             <div class="nom">
                 <input type="text"  name= "nom"  class="anatiny" required>
-                <label for="nom">Nom</label>
+                <label for="nom">Nom Complet</label>
             </div>
             <br>
-            <div class="nom">
+            <!-- <div class="nom">
                 <input type="text"  name= "prenom" class="anatiny" required>
                 <label for="prenom">Prenoms</label>
-            </div>
+            </div> -->
             <br>
             <div class="nom">
                 <input type="email"  name= "email" class="anatiny" required>
