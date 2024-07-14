@@ -8,11 +8,13 @@
     <style>
         body {
             font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            padding-top: 76px; /* Assure que le contenu n'est pas caché derrière la navbar */
         }
     </style>
 </head>
- <!-- Navbar -->
- <header class="bg-white shadow">
+<body>
+    <!-- Navbar -->
+    <header class="bg-white shadow fixed top-0 left-0 right-0 z-50">
         <div class="container mx-auto px-6 py-4 flex justify-between items-center">
             <!-- Navbar gauche -->
             <div class="flex items-center space-x-3">
@@ -48,3 +50,5 @@
             </div>
         </div>
     </header>
+</body>
+</html>

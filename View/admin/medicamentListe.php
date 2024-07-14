@@ -1,10 +1,15 @@
+<?php
+include_once '../layout/admin/adminNavbar.php'
+?>
 <!DOCTYPE html>
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
     <title>Liste des Médicaments</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-    <script>
+    
+</head>
+<script>
         function confirmDeletion(event, url) {
             event.preventDefault();
             if (confirm("Voulez-vous vraiment supprimer cet article ?")) {
@@ -12,7 +17,6 @@
             }
         }
     </script>
-</head>
 <body class="bg-gray-100">
 <div class="container mx-auto mt-5">
     <h1 class="text-center text-3xl font-bold mb-5">Liste des Médicaments</h1>
