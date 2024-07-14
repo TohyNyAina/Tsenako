@@ -8,8 +8,12 @@
 <body>
 <div class="container mt-5">
     <h1 class="text-center mb-5">Liste des Médicaments</h1>
-    <a href="../../Controller/utilisateurController.php?action=login" class="btn btn-secondary mb-4">Connexion</a>
-    <a href="../../Controller/utilisateurController.php?action=Sign" class="btn btn-primary mb-4">Inscription</a>
+    <?php if ($user_logged_in): ?>
+        <a href="../../../MVC-Pharmacie/Controller/utilisateurController.php?action=deconnecter" class="btn btn-danger mb-4">Déconnexion</a>
+    <?php else: ?>
+        <a href="../../../MVC-Pharmacie/Controller/utilisateurController.php?action=login" class="btn btn-secondary mb-4">Connexion</a>
+        <a href="../../../MVC-Pharmacie/Controller/utilisateurController.php?action=sign" class="btn btn-primary mb-4">Inscription</a>
+    <?php endif; ?>
     <table class="table table-bordered">
         <thead>
             <tr>

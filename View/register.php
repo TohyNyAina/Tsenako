@@ -9,47 +9,56 @@
             var nom = document.getElementById('nom').value;
             var email = document.getElementById('email').value;
             var password = document.getElementById('password').value;
+            var confirmer = document.getElementById('confirmer').value;
 
-            if (nom == "" || email == "" || password == "") {
+            if (nom == "" || email == "" || password == "" || confirmer == "") {
                 alert("Veuillez remplir tous les champs.");
                 return false;
             }
+
+            if (password !== confirmer) {
+                alert("Les mots de passe ne correspondent pas.");
+                return false;
+            }
+
             return true;
         }
     </script>
 </head>
 <body>
-<body>
     <h1>INSCRIPTION</h1>
-    <!-- <a href="../Controller/utilisateurController.php?action=prem" class="btn btn-success mb-4">Revenir à la liste des medicaments</a> -->
-    <form action="../Controller/utilisateurController.php?action=inscription" method="post" enctype="multipart/form-data" onsubmit="return validateForm()">
+    <?php if (isset($_GET['error'])): ?>
+        <div class="alert alert-danger">
+            <?php if ($_GET['error'] == 'password_mismatch'): ?>
+                Les mots de passe ne correspondent pas.
+            <?php elseif ($_GET['error'] == 'email_used'): ?>
+                Cet email est déjà utilisé.
+            <?php endif; ?>
+        </div>
+    <?php endif; ?>
+    <form action="../../MVC-Pharmacie/Controller/utilisateurController.php?action=inscrire" method="post" enctype="multipart/form-data" onsubmit="return validateForm()">
         <div class="formulaire">
             <div class="nom">
-                <input type="text"  name= "nom"  class="anatiny" required>
+                <input type="text" id="nom" name="nom" class="anatiny" required>
                 <label for="nom">Nom Complet</label>
             </div>
             <br>
-            <!-- <div class="nom">
-                <input type="text"  name= "prenom" class="anatiny" required>
-                <label for="prenom">Prenoms</label>
-            </div> -->
             <br>
             <div class="nom">
-                <input type="email"  name= "email" class="anatiny" required>
+                <input type="email" id="email" name="email" class="anatiny" required>
                 <label for="email">Email</label>
             </div>
             <br>
             <div class="nom">
-                <input type="password" name= "mdp" class="anatiny" required>
+                <input type="password" id="password" name="mdp" class="anatiny" required>
                 <label for="password">Mot de passe</label>
             </div>
             <br>
             <div class="nom">
-                <input type="password"  name="confirmer" class="anatiny" required>
-                <label for="password">Confirmer votre mot de passe</label>
+                <input type="password" id="confirmer" name="confirmer" class="anatiny" required>
+                <label for="confirmer">Confirmer votre mot de passe</label>
             </div>
             <input type="submit" value="S'inscrire" class="btn">
-          
         </div>
     </form>
     

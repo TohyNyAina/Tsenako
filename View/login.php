@@ -22,7 +22,7 @@
 <div id="rehetra">
     <h1>Connexion</h1>
     <!-- <a href="../Controller/utilisateurController.php?action=prem" class="btn btn-success mb-4">Revenir à la liste des medicaments</a> -->
-    <form action="../Controller/utilisateurController.php?action=Connexion" method="post" enctype="multipart/form-data" onsubmit="return validateForm()">
+    <form action="../../MVC-Pharmacie/Controller/utilisateurController.php?action=connecter" method="post" enctype="multipart/form-data" onsubmit="return validateForm()">
     <div class="boite">
          <input type="email" name="email" class="case" required>
           <label for="nom">Adresse Email</label>
