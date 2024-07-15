@@ -105,7 +105,7 @@ if (!empty($_SESSION['panier'])) {
                                     <input type="submit" value="Modifier" class="btn bg-blue-500 text-white px-2 py-1 rounded">
                                 </form>
                             </td>
-                            <td class="border px-4 py-2"><?=($medicament->prix * $_SESSION['panier'][$medicament->id])?> €</td>
+                            <td class="border px-4 py-2"><?=($medicament->prix * $_SESSION['panier'][$medicament->id])?> Ar</td>
                             <td class="border px-4 py-2">
                                 <form method="POST" action="/MVC-Pharmacie/View/client/suppr.php">
                                     <input type="hidden" name="id" value="<?=$medicament->id?>">
