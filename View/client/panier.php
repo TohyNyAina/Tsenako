@@ -97,7 +97,7 @@ if (!empty($_SESSION['panier'])) {
                             </td>'
                             <td class="border px-4 py-2"><?=$medicament->nom?></td>
                             <td class="border px-4 py-2"><?=$medicament->categorie?></td>
-                            <td class="border px-4 py-2"><?=$medicament->prix?> €</td>
+                            <td class="border px-4 py-2"><?=$medicament->prix?> Ar</td>
                             <td class="border px-4 py-2">
                                 <form method="POST" action="/MVC-Pharmacie/View/client/adjust.php">
                                     <input type="hidden" name="id" value="<?=$medicament->id?>">
@@ -117,7 +117,7 @@ if (!empty($_SESSION['panier'])) {
                 </tbody>
             </table>
             <div class="container mx-auto mt-5 text-right">
-                <p class="text-xl font-bold">Total à payer: <?=$total?> €</p>
+                <p class="text-xl font-bold">Total à payer: <?=$total?> Ariary</p>
                 <br>
                 <a href="" class="btn bg-green-500 hover:bg-green-600 text-white py-2 px-4 rounded">Passer au paiement</a>
             </div>

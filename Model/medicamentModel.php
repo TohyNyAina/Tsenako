@@ -47,5 +47,11 @@ class MedicamentModel {
         $sql->execute(array($category));
         return $sql->fetchAll();
     }
+
+    public function totalNombre() {
+        $sql = $this->db->ds->prepare("SELECT SUM(nombre) as total FROM medicament");
+        $sql->execute();
+        return $sql->fetchColumn();
+    }
 }
 ?>

@@ -15,7 +15,7 @@ class UtilisateurController {
         if ($user) {
             $_SESSION['user'] = $user;
             if ($user['role'] === 'admin') {
-                header('Location: ../../MVC-Pharmacie/View/admin/adminDashboard.php'); // Rediriger vers le tableau de bord admin
+                header('Location: ../../MVC-Pharmacie/Controller/medicamentController.php?action=dashboard'); // Rediriger vers le tableau de bord admin
             } else {
                 header('Location: ../../MVC-Pharmacie/View/client/medicament.php'); // Rediriger vers le tableau de bord client
             }
@@ -81,6 +81,9 @@ class UtilisateurController {
             exit();
         }
     }
+    public function totalClients() {
+        return $this->model->getTotalClients();
+    }
 }
 
 // Gestion des requêtes
@@ -139,6 +142,12 @@ switch ($action) {
             header('Location: ../../MVC-Pharmacie/index.php');
             exit();
         }
+        break;
+    case 'dashboard':
+        // $totalNombre = $controller->totalNombre();
+        $utilisateurController = new UtilisateurController();
+        $totalClients = $utilisateurController->totalClients();
+        include '../View/admin/adminDashboard.php';
         break;
     case 'panier':
         $controller->redirectIfNotLoggedIn();

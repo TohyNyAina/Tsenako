@@ -53,6 +53,11 @@ class UtilisateurModel {
         $host = $this->db->ds->prepare("DELETE FROM utilisateur WHERE id = :id");
         return $host->execute(["id" => $id]);
     }
+
+    public function getTotalClients() {
+        $host = $this->db->ds->query("SELECT COUNT(*) as total FROM utilisateur WHERE role = 'client'");
+        return $host->fetch(PDO::FETCH_ASSOC)['total'];
+    }
     
 }
 ?>

@@ -11,7 +11,17 @@ if (!isset($_SESSION['user']) || $_SESSION['user']['role'] !== 'admin') {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-    <title>Dasboardt</title>
+    <title>Dashboard</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+        main {
+            flex: 1;
+        }
+    </style>
 </head>
 <body class="bg-gray-100">
 
@@ -41,8 +51,43 @@ if (!isset($_SESSION['user']) || $_SESSION['user']['role'] !== 'admin') {
     <br><br><br><br>
     <!-- =================================================================NAVBAR END======================================================================================== -->
 
-    <div>
+    <main class="container mx-auto mt-10">
         <h1 class="text-center text-3xl font-bold mb-5">Dashboard</h1>
-    </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <!-- Card 1: Total d'argent gagné -->
+            <div class="bg-white p-6 rounded-lg shadow-lg">
+                <h2 class="text-2xl font-bold mb-2">Total d'Argent Gagné</h2>
+                <p class="text-3xl text-green-500 font-bold">€12,345</p>
+            </div>
+
+            <!-- Card 2: Nombre total de clients -->
+            <div class="bg-white p-6 rounded-lg shadow-lg">
+                <h2 class="text-2xl font-bold mb-2">Nombre Total de Clients</h2>
+                <p class="text-3xl text-blue-500 font-bold">150</p>
+            </div>
+
+            <!-- Card 3: Nombre total de produits en stock -->
+            <div class="bg-white p-6 rounded-lg shadow-lg">
+                <h2 class="text-2xl font-bold mb-2">Nombre Total de Produits en Stock</h2>
+                <p class="text-3xl text-yellow-500 font-bold">200</p>
+            </div>
+        </div>
+    </main>
+
+     <!-- =====================================================================FOOTER========================================================================================= -->
+     <footer class="bg-green-900 py-12 mt-auto">
+        <div class="container mx-auto px-6">
+            <div class="md:flex md:items-center md:justify-between">
+                <div class="flex justify-center md:order-2">
+                    <a href="../../View//client/medicament.php" class="text-white hover:text-gray-900 mx-3">Boutique</a>
+                </div>
+                <div class="text-center md:text-right md:order-1">
+                    <p class="text-white">Pharmacy &copy; 2024. Tous droits réservés.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- =====================================================================FOOTER END===================================================================================== -->
 </body>
 </html>

@@ -1,4 +1,5 @@
 <?php
+
 require_once '../Model/medicamentModel.php';
 
 class MedicamentController {
@@ -58,6 +59,10 @@ class MedicamentController {
         exit;
     }
 
+    public function totalNombre() {
+        return $this->model->totalNombre();
+    }
+
     private function isAjaxRequest() {
         return isset($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) === 'xmlhttprequest';
     }
@@ -91,11 +96,16 @@ switch ($action) {
     case 'add':
         include '../View/admin/medicamentAjout.php';
         break;
+    case 'dashboard':
+        $totalNombre = $controller->totalNombre();
+        include '../View/admin/adminDashboard.php';
+        break;
     case 'search':
         $controller->search($_GET['query']);
         break;
     default:
         $medicaments = $controller->lister();
+        $totalNombre = $controller->totalNombre();
         include '../View/admin/medicamentListe.php';
         break;
 }
