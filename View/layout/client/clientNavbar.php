@@ -22,7 +22,7 @@
             <div class="flex items-center space-x-3">
                 <img src="../../../../MVC-Pharmacie/assets/img/logo.jpg" alt="Samsung Logo" class="h-12">
                 <p>Pharmacy</p>
-                <a href="../../../View/client/medicament.php" class="text-gray-600 hover:text-gray-900">Boutique</a>
+                <a href="../../../../MVC-Pharmacie/View/client/medicament.php" class="text-gray-600 hover:text-gray-900">Boutique</a>
             </div>
 
             <!-- Navbar droite -->
