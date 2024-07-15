@@ -82,6 +82,7 @@ if (!empty($_SESSION['panier'])) {
                     <tr>
                         <th class="px-4 py-2">Photo</th>
                         <th class="px-4 py-2">Nom</th>
+                        <th class="px-4 py-2">Categorie</th>
                         <th class="px-4 py-2">Prix</th>
                         <th class="px-4 py-2">Nombre</th>
                         <th class="px-4 py-2">Total</th>
@@ -95,6 +96,7 @@ if (!empty($_SESSION['panier'])) {
                                 <img src="../../uploads/<?=$medicament->photo?>" alt="' + medicament.nom + '" class="w-12 h-12 object-cover rounded">
                             </td>'
                             <td class="border px-4 py-2"><?=$medicament->nom?></td>
+                            <td class="border px-4 py-2"><?=$medicament->categorie?></td>
                             <td class="border px-4 py-2"><?=$medicament->prix?> €</td>
                             <td class="border px-4 py-2">
                                 <form method="POST" action="/MVC-Pharmacie/View/client/adjust.php">
