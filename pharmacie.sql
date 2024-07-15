@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le : lun. 15 juil. 2024 à 06:48
+-- Généré le : lun. 15 juil. 2024 à 07:45
 -- Version du serveur : 10.4.27-MariaDB
 -- Version de PHP : 8.2.0
 
@@ -57,7 +57,10 @@ CREATE TABLE `medicament` (
 
 INSERT INTO `medicament` (`id`, `nom`, `prix`, `categorie`, `nombre`, `ordonance`, `photo`) VALUES
 (5, 'Amoxi', 3000, 'Gélule', 3, '0', 'amoxi.jpg'),
-(7, 'Frevex', 20000, 'Comprimé', 2, '0', 'fervex.jpg');
+(7, 'Ferevex', 20000, 'Comprimé', 2, '0', 'fervex.jpg'),
+(8, 'Doliprane', 5000, 'Comprimé', 5, '0', 'doli.jpg'),
+(9, 'Hélicidine', 30000, 'Sirop', 7, '0', 'helicidine.jpg'),
+(10, 'Motrine', 6000, 'Gélule', 4, '0', 'motrin-gels-fr.png');
 
 -- --------------------------------------------------------
 
@@ -117,7 +120,7 @@ ALTER TABLE `commande`
 -- AUTO_INCREMENT pour la table `medicament`
 --
 ALTER TABLE `medicament`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT pour la table `utilisateur`
