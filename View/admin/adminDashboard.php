@@ -6,7 +6,7 @@
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <title>Dasboardt</title>
 </head>
-<body>
+<body class="bg-gray-100">
 
     <!-- =================================================================NAVBAR============================================================================================= -->
     <!-- Navbar -->
@@ -35,7 +35,7 @@
     <!-- =================================================================NAVBAR END======================================================================================== -->
 
     <div>
-        <h1>Dashboard</h1>
+        <h1 class="text-center text-3xl font-bold mb-5">Dashboard</h1>
     </div>
 </body>
 </html>

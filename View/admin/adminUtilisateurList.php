@@ -52,7 +52,7 @@
         });
     </script>
 </head>
-<body>
+<body class="bg-gray-100">
 
     <!-- =================================================================NAVBAR============================================================================================= -->
     <!-- Navbar -->
@@ -81,7 +81,7 @@
     <!-- =================================================================NAVBAR END======================================================================================== -->
 
     <div class="container mx-auto px-6 py-4">
-        <h1 class="text-center text-2xl font-bold mb-5">Liste des utilisateurs</h1>
+        <h1 class="text-center text-3xl font-bold mb-5">Liste des utilisateurs</h1>
         <div class="overflow-x-auto">
         <table class="min-w-full bg-white">
             <thead>

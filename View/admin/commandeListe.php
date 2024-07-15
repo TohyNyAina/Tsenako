@@ -36,7 +36,7 @@
 
 
     <div>
-        <h1>Liste des Commandes</h1>
+        <h1 class="text-center text-3xl font-bold mb-5">Liste des Commandes</h1>
     </div>
 </body>
 </html>
