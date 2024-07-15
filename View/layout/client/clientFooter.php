@@ -3,7 +3,7 @@
         <div class="container mx-auto px-6">
             <div class="md:flex md:items-center md:justify-between">
                 <div class="flex justify-center md:order-2">
-                    <a href="#" class="text-white hover:text-gray-900 mx-3">Boutique</a>
+                    <a href="" class="text-white hover:text-gray-900 mx-3">Boutique</a>
                     <a href="#" class="text-white hover:text-gray-900 mx-3">Administration</a>
                     <a href="#" class="text-white hover:text-gray-900 mx-3">Contactez nous</a>
                 </div>

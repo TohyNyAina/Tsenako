@@ -13,6 +13,8 @@
     </style>
 </head>
 <body>
+
+<!-- ========================================================================NAVBAR================================================================================ -->
     <!-- Navbar -->
     <header class="bg-white shadow fixed top-0 left-0 right-0 z-50">
         <div class="container mx-auto px-6 py-4 flex justify-between items-center">
@@ -20,14 +22,7 @@
             <div class="flex items-center space-x-3">
                 <img src="../../../../MVC-Pharmacie/assets/img/logo.jpg" alt="Samsung Logo" class="h-12">
                 <p>Pharmacy</p>
-                <a href="#boutique" class="text-gray-600 hover:text-gray-900">Boutique</a>
-                <div class="relative group">
-                    <a href="#" class="text-gray-600 hover:text-gray-900">Administration</a>
-                    <div class="absolute hidden group-hover:block bg-white shadow-lg mt-2 rounded-lg">
-                        <a href="#" class="block px-4 py-2 text-gray-600 hover:bg-gray-100">Sub-link 1</a>
-                        <a href="#" class="block px-4 py-2 text-gray-600 hover:bg-gray-100">Sub-link 2</a>
-                    </div>
-                </div>
+                <a href="../../../View/client/medicament.php" class="text-gray-600 hover:text-gray-900">Boutique</a>
             </div>
 
             <!-- Navbar droite -->
@@ -49,5 +44,7 @@
             </div>
         </div>
     </header>
+
+<!-- ========================================================================NAVBAR END================================================================================ -->    
 </body>
 </html>
