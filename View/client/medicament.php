@@ -92,7 +92,7 @@
                         html += '<h3 class="text-xl font-bold text-gray-800 mb-4">' + medicament.nom + '</h3>';
                         html += '<p class="text-gray-600 mb-4">' + medicament.prix + ' Ar</p>';
                         html += '<div class="flex justify-between">';
-                        html += '<a href="' + medicament.id + '" class="btn bg-green-500 hover:bg-green-600 text-white py-2 px-4 rounded mb-4">Ajouter au panier</a>';
+                        html += `<a href="med.php?id=${medicament.id}"  class="btn bg-green-500 hover:bg-green-600 text-white py-2 px-4 rounded mb-4">Ajouter au panier</a>`;
                         html += '</div>';
                         html += '</div>';
                     });

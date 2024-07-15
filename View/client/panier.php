@@ -1,3 +1,13 @@
+<?php
+    require_once '../../Utils/DB.php';
+    session_start();
+    $ids = array_keys($_SESSION['panier']);
+    $ids = implode(',', $ids);
+    $db = new DB();
+    $sql = "SELECT * FROM medicament WHERE id IN ($ids)";
+    $result = $db->ds->query($sql);
+    $medicaments = $result->fetchAll(PDO::FETCH_OBJ);
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -44,6 +54,30 @@
     <div>
         <h1 class="text-center text-3xl font-bold mb-5">Panier</h1>
     </div>
+    <table class="container table-striped">
+        <thead>
+            <th>Nom</th>
+            <th>Prix</th>
+            <th>Nombre</th>
+            <th>Total</th>
+            <th></th>
+        </thead>
+        <tbody>
+            <?php foreach($medicaments as $medicament): ?>
+                <tr>
+                    <td><?=$medicament->nom?></td>
+                    <td><?=$medicament->prix?></td>
+                    <td><?=$_SESSION['panier'][$medicament->id]?></td>
+                    <td><?=($medicament->prix * $_SESSION['panier'][$medicament->id])?></td>
+                    <td>
+                        <form method="POST" action="/MVC-Pharmacie/View/client/suppr.php?id=<?=$medicament->id?>">
+                            <input type="submit" value="Supprimer">
+                        </form>
+                    </td>
+                </tr>
+            <?php endforeach ?>
+        </tbody>
+    </table>
 </body>
 
 <!-- =====================================================================FOOTER========================================================================================= -->
