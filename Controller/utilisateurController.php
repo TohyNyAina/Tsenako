@@ -130,7 +130,6 @@ switch ($action) {
     case 'editMedicament':
         $controller->redirectIfNotLoggedIn();
         $controller->redirectIfNotAdmin();
-        $controller->editMedicament($_GET['id']);
         break;
     case 'medicament':
         $controller->redirectIfNotLoggedIn();
@@ -143,11 +142,11 @@ switch ($action) {
             exit();
         }
         break;
-    case 'dashboard':
-        // $totalNombre = $controller->totalNombre();
-        $utilisateurController = new UtilisateurController();
-        $totalClients = $utilisateurController->totalClients();
-        include '../View/admin/adminDashboard.php';
+    case 'totalClients':
+        $totalClients = $controller->totalClients();
+        header('Content-Type: application/json');
+        echo json_encode(['totalClients' => $totalClients]);
+        exit;
         break;
     case 'panier':
         $controller->redirectIfNotLoggedIn();

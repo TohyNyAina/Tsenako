@@ -70,7 +70,7 @@ if (isset($_SESSION['panier'])) {
 
 <body class="bg-gray-100">
     <div class="container mx-auto mt-5">
-        <h1 class="text-center text-3xl font-bold mb-5">Liste des Médicaments</h1>
+        <h1 class="text-center text-3xl font-bold mb-5 text-green-600">Nos Produits</h1>
 
         <!-- Barre de recherche -->
         <div class="flex justify-center mb-5">

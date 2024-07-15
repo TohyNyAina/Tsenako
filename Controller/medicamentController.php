@@ -96,9 +96,11 @@ switch ($action) {
     case 'add':
         include '../View/admin/medicamentAjout.php';
         break;
-    case 'dashboard':
+    case 'totalNombre':
         $totalNombre = $controller->totalNombre();
-        include '../View/admin/adminDashboard.php';
+        header('Content-Type: application/json');
+        echo json_encode(['total' => $totalNombre]);
+        exit;
         break;
     case 'search':
         $controller->search($_GET['query']);

@@ -7,6 +7,7 @@ if (!isset($_SESSION['user']) || $_SESSION['user']['role'] !== 'admin') {
 ?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -18,11 +19,13 @@ if (!isset($_SESSION['user']) || $_SESSION['user']['role'] !== 'admin') {
             flex-direction: column;
             min-height: 100vh;
         }
+
         main {
             flex: 1;
         }
     </style>
 </head>
+
 <body class="bg-gray-100">
 
     <!-- =================================================================NAVBAR============================================================================================= -->
@@ -52,7 +55,9 @@ if (!isset($_SESSION['user']) || $_SESSION['user']['role'] !== 'admin') {
     <!-- =================================================================NAVBAR END======================================================================================== -->
 
     <main class="container mx-auto mt-10">
-        <h1 class="text-center text-3xl font-bold mb-5">Dashboard</h1>
+        <h1 class="text-center text-3xl font-bold mb-5">Tableau de bord</h1>
+
+        <br><br><br>
 
         <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
             <!-- Card 1: Total d'argent gagné -->
@@ -64,19 +69,19 @@ if (!isset($_SESSION['user']) || $_SESSION['user']['role'] !== 'admin') {
             <!-- Card 2: Nombre total de clients -->
             <div class="bg-white p-6 rounded-lg shadow-lg">
                 <h2 class="text-2xl font-bold mb-2">Nombre Total de Clients</h2>
-                <p class="text-3xl text-blue-500 font-bold">150</p>
+                <p id="totalClients" class="text-3xl text-blue-500 font-bold">Chargement en cours...</p>
             </div>
 
             <!-- Card 3: Nombre total de produits en stock -->
             <div class="bg-white p-6 rounded-lg shadow-lg">
                 <h2 class="text-2xl font-bold mb-2">Nombre Total de Produits en Stock</h2>
-                <p class="text-3xl text-yellow-500 font-bold">200</p>
+                <p id="totalProduits" class="text-3xl text-yellow-500 font-bold">Chargement en cours...</p>
             </div>
         </div>
     </main>
 
-     <!-- =====================================================================FOOTER========================================================================================= -->
-     <footer class="bg-green-900 py-12 mt-auto">
+    <!-- =====================================================================FOOTER========================================================================================= -->
+    <footer class="bg-green-900 py-12 mt-auto">
         <div class="container mx-auto px-6">
             <div class="md:flex md:items-center md:justify-between">
                 <div class="flex justify-center md:order-2">
@@ -90,4 +95,41 @@ if (!isset($_SESSION['user']) || $_SESSION['user']['role'] !== 'admin') {
     </footer>
     <!-- =====================================================================FOOTER END===================================================================================== -->
 </body>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Fonction AJAX pour récupérer le nombre total de produits en stock
+        function getTotalProducts() {
+            fetch('../../../../MVC-Pharmacie/Controller/medicamentController.php?action=totalNombre')
+                .then(response => response.json())
+                .then(data => {
+                    // Mettre à jour l'élément HTML avec le nombre total récupéré
+                    document.getElementById('totalProduits').textContent = data.total;
+                })
+                .catch(error => console.error('Erreur lors de la récupération du nombre total de produits:', error));
+        }
+
+        // Appeler la fonction au chargement de la page
+        getTotalProducts();
+    });
+</script>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Fonction AJAX pour récupérer le nombre total de clients
+        function getTotalClients() {
+            fetch('../../../../MVC-Pharmacie/Controller/utilisateurController.php?action=totalClients')
+                .then(response => response.json())
+                .then(data => {
+                    // Mettre à jour l'élément HTML avec le nombre total récupéré
+                    document.getElementById('totalClients').textContent = data.totalClients;
+                })
+                .catch(error => console.error('Erreur lors de la récupération du nombre total de clients:', error));
+        }
+
+        // Appeler la fonction au chargement de la page
+        getTotalClients();
+    });
+</script>
+
 </html>

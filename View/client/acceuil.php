@@ -9,17 +9,10 @@
                 <p class="mt-3 text-lg text-gray-800 dark:text-neutral-400">Découvrez notre large gamme de produits pharmaceutiques de qualité, accessibles en quelques clics pour votre santé et votre bien-être.</p>
                 
                 <!-- Barre de recherche-->
-                <div class="mt-7 grid gap-3 w-full sm:inline-flex">
-                    <div class="relative w-64">
-                        <input type="text" placeholder="Rechercher médicament" class="py-2 px-4 pl-10 w-full border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent">
-                        <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-search text-gray-400">
-                                <circle cx="11" cy="11" r="8"/>
-                                <path d="m21 21-4.3-4.3"/>
-                            </svg>
-                        </div>
-                    </div>
-                </div>
+                <br><br>
+                <a href="#boutique" class="btn bg-blue-500 hover:bg-blue-600 text-white py-1 px-3 rounded">
+                    Voir nos produits
+                </a>
             </div>
             
             <!-- Image -->
