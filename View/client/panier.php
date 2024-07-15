@@ -8,6 +8,15 @@
     $result = $db->ds->query($sql);
     $medicaments = $result->fetchAll(PDO::FETCH_OBJ);
 ?>
+<?php
+session_start();
+if (!isset($_SESSION['user']) || $_SESSION['user']['role'] !== 'client') {
+    header('Location: ../../index.php');
+    exit();
+}
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
