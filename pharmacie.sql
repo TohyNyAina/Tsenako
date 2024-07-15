@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le : sam. 13 juil. 2024 à 12:06
+-- Généré le : lun. 15 juil. 2024 à 06:48
 -- Version du serveur : 10.4.27-MariaDB
 -- Version de PHP : 8.2.0
 
@@ -56,7 +56,8 @@ CREATE TABLE `medicament` (
 --
 
 INSERT INTO `medicament` (`id`, `nom`, `prix`, `categorie`, `nombre`, `ordonance`, `photo`) VALUES
-(2, 'Paracetamole', 2000, 'Pilule', 2, '1', '1.png');
+(5, 'Amoxi', 3000, 'Gélule', 3, '0', 'amoxi.jpg'),
+(7, 'Frevex', 20000, 'Comprimé', 2, '0', 'fervex.jpg');
 
 -- --------------------------------------------------------
 
@@ -71,6 +72,14 @@ CREATE TABLE `utilisateur` (
   `password` varchar(250) NOT NULL,
   `role` varchar(6) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Déchargement des données de la table `utilisateur`
+--
+
+INSERT INTO `utilisateur` (`id`, `nom`, `email`, `password`, `role`) VALUES
+(5, 'Admin', 'admin@admin.com', '$2y$10$HFlHddMwbP9CyJm23PjEnu8e4Wwdb2sUr0W26NNsiW0iGZWBE7c1.', 'admin'),
+(11, 'Client', 'client@gmail.com', '$2y$10$nBPx7K2fB6wMxL453Ey8r.9zDBLey0sV/WMvixELfV6GHsawT6rF6', 'client');
 
 --
 -- Index pour les tables déchargées
@@ -108,13 +117,13 @@ ALTER TABLE `commande`
 -- AUTO_INCREMENT pour la table `medicament`
 --
 ALTER TABLE `medicament`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT pour la table `utilisateur`
 --
 ALTER TABLE `utilisateur`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

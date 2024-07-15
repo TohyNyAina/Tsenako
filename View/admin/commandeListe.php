@@ -3,16 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pharmacie</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-    <style>
-        body {
-            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-            padding-top: 76px; /* Assure que le contenu n'est pas caché derrière la navbar */
-        }
-    </style>
+    <title>Commande</title>
 </head>
 <body>
+
     <!-- =================================================================NAVBAR============================================================================================= -->
     <!-- Navbar -->
     <header class="bg-white shadow fixed top-0 left-0 right-0 z-50">
@@ -23,7 +18,7 @@
                 <p>Pharmacy</p>
                 <a href="../../../../MVC-Pharmacie/View/admin/adminDashboard.php" class="text-gray-600 hover:text-gray-900">Dashboard</a>
                 <a href="../../../../MVC-Pharmacie/View/admin/adminUtilisateurList.php" class="text-gray-600 hover:text-gray-900">Liste des Utilisateurs</a>
-                <a href="../../../../MVC-Pharmacie/View/admin/medicamentListe.php" class="text-gray-600 hover:text-gray-900">Gestion des Medicament</a>
+                <a href="../../../../MVC-Pharmacie/Controller/medicamentController.php?action=lister" class="text-gray-600 hover:text-gray-900">Gestion des Medicament</a>
                 <a href="../../../../MVC-Pharmacie/View/admin/commandeListe.php" class="text-gray-600 hover:text-gray-900">Liste des Commande</a>
             </div>
 
@@ -36,6 +31,12 @@
             </div>
         </div>
     </header>
+    <br><br><br><br>
     <!-- =================================================================NAVBAR END======================================================================================== -->
+
+
+    <div>
+        <h1>Liste des Commandes</h1>
+    </div>
 </body>
 </html>

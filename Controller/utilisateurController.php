@@ -24,15 +24,15 @@ class UtilisateurController {
             header('Location: ../../MVC-Pharmacie/View/login.php?error=auth_failed'); // Rediriger avec erreur d'authentification
             exit();
         }
-    }   
+    }
 
-    public function inscrire($email, $password) {
+    public function inscrire($nom, $email, $password) {
         if ($this->model->isEmailUsed($email)) {
             header('Location: ../../MVC-Pharmacie/View/register.php?error=email_used');
             exit();
         }
 
-        $this->model->Inscrire('', $email, $password); // Le nom est laissé vide pour l'inscription
+        $this->model->Inscrire($nom, $email, $password); // Le nom est laissé vide pour l'inscription
         header('Location: ../../MVC-Pharmacie/View/login.php?success=registered');
         exit();
     }
@@ -46,6 +46,12 @@ class UtilisateurController {
 
     public function getUsers() {
         return $this->model->GetUsers();
+    }
+
+    public function supprimer($id) {
+        $this->model->DeleteUser($id);
+        echo json_encode(['success' => true]);
+        exit();
     }
 
     public function checkLoggedIn() {
@@ -64,7 +70,7 @@ switch ($action) {
         $controller->connecter($_POST['email'], $_POST['mdp']);
         break;
     case 'inscrire':
-        $controller->inscrire($_POST['email'], $_POST['mdp']);
+        $controller->inscrire($_POST['nom'], $_POST['email'], $_POST['mdp']);
         break;
     case 'deconnecter':
         $controller->deconnecter();
@@ -72,6 +78,13 @@ switch ($action) {
     case 'listUsers':
         $users = $controller->getUsers();
         include '../../MVC-Pharmacie/View/admin/listUsers.php';
+        break;
+    case 'getUsers':
+        header('Content-Type: application/json');
+        echo json_encode($controller->getUsers());
+        break;
+    case 'supprimer':
+        $controller->supprimer($_POST['id']);
         break;
     default:
         // Vérification de connexion par défaut

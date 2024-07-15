@@ -48,5 +48,11 @@ class UtilisateurModel {
         $result = $host->fetchAll();
         return $result;
     }
+
+    public function DeleteUser($id) {
+        $host = $this->db->ds->prepare("DELETE FROM utilisateur WHERE id = :id");
+        return $host->execute(["id" => $id]);
+    }
+    
 }
 ?>
