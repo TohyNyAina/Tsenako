@@ -51,6 +51,13 @@ class MedicamentController {
         return $this->model->findMedicamentById($id);
     }
 
+    public function search($query) {
+        $medicaments = $this->model->search($query);
+        header('Content-Type: application/json');
+        echo json_encode($medicaments);
+        exit;
+    }
+
     private function isAjaxRequest() {
         return isset($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) === 'xmlhttprequest';
     }
@@ -78,12 +85,18 @@ switch ($action) {
         include '../View/admin/medicamentModification.php';
         break;
     case 'lister':
-    default:
         $medicaments = $controller->lister();
         include '../View/admin/medicamentListe.php';
         break;
     case 'add':
         include '../View/admin/medicamentAjout.php';
+        break;
+    case 'search':
+        $controller->search($_GET['query']);
+        break;
+    default:
+        $medicaments = $controller->lister();
+        include '../View/admin/medicamentListe.php';
         break;
 }
 ?>
