@@ -44,7 +44,7 @@ if (isset($_SESSION['panier'])) {
         <div class="flex items-center space-x-3">
             <img src="../../../../MVC-Pharmacie/assets/img/logo.jpg" alt="Samsung Logo" class="h-12">
             <p>Pharmacy</p>
-            <a href="../../../../MVC-Pharmacie/View/client/medicament.php" class="text-gray-600 hover:text-gray-900">Boutique</a>
+            <a href="../../../View/client/medicament.php" class="text-gray-600 hover:text-gray-900">Boutique</a>
         </div>
 
         <div class="flex items-center space-x-3">
@@ -70,7 +70,7 @@ if (isset($_SESSION['panier'])) {
 
 <body class="bg-gray-100">
     <div class="container mx-auto mt-5">
-        <h1 class="text-center text-3xl font-bold mb-5 text-green-600">Nos Produits</h1>
+        <h1 class="text-center text-3xl font-bold mb-5">Liste des Médicaments</h1>
 
         <!-- Barre de recherche -->
         <div class="flex justify-center mb-5">

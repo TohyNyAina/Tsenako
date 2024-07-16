@@ -13,37 +13,60 @@ if (!isset($_SESSION['user']) || $_SESSION['user']['role'] !== 'admin') {
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <title>Commande</title>
 </head>
-<body>
-
-    <!-- =================================================================NAVBAR============================================================================================= -->
+<body class="bg-gray-100">
     <!-- Navbar -->
     <header class="bg-white shadow fixed top-0 left-0 right-0 z-50">
         <div class="container mx-auto px-6 py-4 flex justify-between items-center">
-            <!-- Navbar gauche -->
             <div class="flex items-center space-x-3">
-                <img src="../../../../MVC-Pharmacie/assets/img/logo.jpg" alt="Samsung Logo" class="h-12">
+                <img src="../../../../MVC-Pharmacie/assets/img/logo.jpg" alt="Pharmacy Logo" class="h-12">
                 <p>Pharmacy</p>
                 <a href="../../../../MVC-Pharmacie/View/admin/adminDashboard.php" class="text-gray-600 hover:text-gray-900">Dashboard</a>
                 <a href="../../../../MVC-Pharmacie/View/admin/adminUtilisateurList.php" class="text-gray-600 hover:text-gray-900">Liste des Utilisateurs</a>
-                <a href="../../../../MVC-Pharmacie/Controller/medicamentController.php?action=lister" class="text-gray-600 hover:text-gray-900">Gestion des Medicament</a>
-                <a href="../../../../MVC-Pharmacie/View/admin/commandeListe.php" class="text-gray-600 hover:text-gray-900">Liste des Commande</a>
+                <a href="../../../../MVC-Pharmacie/Controller/medicamentController.php?action=lister" class="text-gray-600 hover:text-gray-900">Gestion des Medicaments</a>
+                <a href="../../../../MVC-Pharmacie/View/admin/commandeListe.php" class="text-gray-600 hover:text-gray-900">Liste des Commandes</a>
             </div>
-
-            <!-- Navbar droite -->
             <div class="flex items-center space-x-3">
-                <!--Bouton Deconnexion-->
-                <a href="../../../MVC-Pharmacie/Controller/utilisateurController.php?action=deconnecter" class="btn bg-red-500 hover:bg-red-600 text-white py-1 px-3 rounded">
-                    Deconnexion
-                </a>
+                <a href="../../../MVC-Pharmacie/Controller/utilisateurController.php?action=deconnecter" class="btn bg-red-500 hover:bg-red-600 text-white py-1 px-3 rounded">Déconnexion</a>
             </div>
         </div>
     </header>
     <br><br><br><br>
-    <!-- =================================================================NAVBAR END======================================================================================== -->
-
-
-    <div>
+    <div class="container mx-auto mt-5">
         <h1 class="text-center text-3xl font-bold mb-5">Liste des Commandes</h1>
     </div>
+    <div class="container mx-auto px-6 py-8">
+        <div id="commandes-list"></div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $.ajax({
+                url: '/MVC-Pharmacie/Controller/commandeController.php?action=get-all',
+                method: 'GET',
+                dataType: 'json',
+                success: function(data) {
+                    if (data.length > 0) {
+                        let html = '<div class="overflow-x-auto"><table class="min-w-full bg-white"><thead><tr><th class="py-2 px-4 border-b">Id</th><th class="py-2 px-4 border-b">Medicament</th><th class="py-2 px-4 border-b">Prix total</th><th class="py-2 px-4 border-b">Acheteur</th><th class="py-2 px-4 border-b">Id Acheteur</th></tr></thead><tbody>';
+                        data.forEach(function(commande) {
+                            html += '<tr class="hover:bg-gray-100">';
+                            html += '<td class="py-2 px-4 border-b">' + commande.id + '</td>';
+                            html += '<td class="py-2 px-4 border-b">' + commande.medicament + '</td>';
+                            html += '<td class="py-2 px-4 border-b">' + commande.total_prix + ' Ar</td>';
+                            html += '<td class="py-2 px-4 border-b">' + commande.acheteur + '</td>';
+                            html += '<td class="py-2 px-4 border-b">' + commande.id_acheteur + '</td>';
+                            html += '</tr>';
+                        });
+                        html += '</tbody></table></div>';
+                        $('#commandes-list').html(html);
+                    } else {
+                        $('#commandes-list').html('<p class="text-center">Aucune commande trouvée.</p>');
+                    }
+                },
+                error: function() {
+                    $('#commandes-list').html('<p>Une erreur est survenue lors du chargement des commandes.</p>');
+                }
+            });
+        });
+    </script>
 </body>
 </html>

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
     <meta charset="UTF-8">
     <title>Inscription</title>
@@ -19,10 +20,11 @@
         }
     </script>
 </head>
+
 <body>
-<!-- =================================================================NAVBAR============================================================================= -->
- <!-- Navbar -->
- <header class="bg-white shadow fixed top-0 left-0 right-0 z-50">
+    <!-- =================================================================NAVBAR============================================================================= -->
+    <!-- Navbar -->
+    <header class="bg-white shadow fixed top-0 left-0 right-0 z-50">
         <div class="container mx-auto px-6 py-4 flex justify-between items-center">
             <!-- Navbar gauche -->
             <div class="flex items-center space-x-3">
@@ -40,30 +42,31 @@
             </div>
         </div>
     </header> <br><br>
-<!-- =================================================================NAVBAR END ========================================================================= -->    
+    <!-- =================================================================NAVBAR END ========================================================================= -->
 
-<div id="rehetra">
-    <br><br>
-    <h1>Connexion</h1>
-    <!-- <a href="../Controller/utilisateurController.php?action=prem" class="btn btn-success mb-4">Revenir à la liste des medicaments</a> -->
-    <form action="../../MVC-Pharmacie/Controller/utilisateurController.php?action=connecter" method="post" enctype="multipart/form-data" onsubmit="return validateForm()">
-    <div class="boite">
-         <input type="email" name="email" class="case" required>
-          <label for="nom">Adresse Email</label>
-    </div>
-    <div class="boite">
-          <input type="password" name="mdp" class="case" required>
-          <label for="passe">Mot de passe</label>
-    </div>
+    <div id="rehetra">
+        <br><br>
+        <h1>Connexion</h1>
+        <!-- <a href="../Controller/utilisateurController.php?action=prem" class="btn btn-success mb-4">Revenir à la liste des medicaments</a> -->
+        <form action="../../MVC-Pharmacie/Controller/utilisateurController.php?action=connecter" method="post" enctype="multipart/form-data" onsubmit="return validateForm()">
+            <div class="boite">
+                <input type="email" name="email" class="case" required>
+                <label for="nom">Adresse Email</label>
+            </div>
+            <div class="boite">
+                <input type="password" name="mdp" class="case" required>
+                <label for="passe">Mot de passe</label>
+            </div>
             <div class="seconnecter">
-               <input type="submit" value="Se connecter" class="btn" id="btn">
+                <input type="submit" value="Se connecter" class="btn" id="btn">
             </div>
 
         </form>
-             <div class="sinscrire">
-                <a href="register.php"><input type="submit" value="S'inscrire" class="btn"></a>
-            </div>
-    
-</div>
+        <div class="sinscrire">
+            <a href="register.php"><input type="submit" value="S'inscrire" class="btn"></a>
+        </div>
+
+    </div>
 </body>
+
 </html>

@@ -1,21 +1,24 @@
 <?php
 require_once '../Model/UtilisateurModel.php';
 
-class UtilisateurController {
+class UtilisateurController
+{
     private $model;
 
-    public function __construct() {
+    public function __construct()
+    {
         $this->model = new UtilisateurModel();
         session_start();
     }
 
-    public function connecter($email, $password) {
+    public function connecter($email, $password)
+    {
         $user = $this->model->Connecter($email, $password);
 
         if ($user) {
             $_SESSION['user'] = $user;
             if ($user['role'] === 'admin') {
-                header('Location: ../../MVC-Pharmacie/Controller/medicamentController.php?action=dashboard'); // Rediriger vers le tableau de bord admin
+                header('Location: ../../MVC-Pharmacie/View/admin/adminDashboard.php'); // Rediriger vers le tableau de bord admin
             } else {
                 header('Location: ../../MVC-Pharmacie/View/client/medicament.php'); // Rediriger vers le tableau de bord client
             }
@@ -26,7 +29,8 @@ class UtilisateurController {
         }
     }
 
-    public function inscrire($nom, $email, $password) {
+    public function inscrire($nom, $email, $password)
+    {
         if ($this->model->isEmailUsed($email)) {
             header('Location: ../../MVC-Pharmacie/View/register.php?error=email_used');
             exit();
@@ -37,51 +41,60 @@ class UtilisateurController {
         exit();
     }
 
-    public function deconnecter() {
+    public function deconnecter()
+    {
         session_destroy();
         header('Location: ../../MVC-Pharmacie/index.php?success=logout');
         exit();
     }
 
-    public function getUsers() {
+    public function getUsers()
+    {
         return $this->model->GetUsers();
     }
 
-    public function supprimer($id) {
+    public function supprimer($id)
+    {
         $this->model->DeleteUser($id);
         echo json_encode(['success' => true]);
         exit();
     }
 
-    public function checkLoggedIn() {
+    public function checkLoggedIn()
+    {
         return isset($_SESSION['user']);
     }
 
-    public function checkRole($role) {
+    public function checkRole($role)
+    {
         return isset($_SESSION['user']) && $_SESSION['user']['role'] === $role;
     }
 
-    public function redirectIfNotLoggedIn() {
+    public function redirectIfNotLoggedIn()
+    {
         if (!$this->checkLoggedIn()) {
             header('Location: ../../MVC-Pharmacie/index.php');
             exit();
         }
     }
 
-    public function redirectIfNotAdmin() {
+    public function redirectIfNotAdmin()
+    {
         if (!$this->checkRole('admin')) {
             header('Location: ../../MVC-Pharmacie/index.php');
             exit();
         }
     }
 
-    public function redirectIfNotClient() {
+    public function redirectIfNotClient()
+    {
         if (!$this->checkRole('client')) {
             header('Location: ../../MVC-Pharmacie/index.php');
             exit();
         }
     }
-    public function totalClients() {
+    public function totalClients()
+    {
         return $this->model->getTotalClients();
     }
 }
@@ -165,4 +178,3 @@ switch ($action) {
         }
         break;
 }
-?>

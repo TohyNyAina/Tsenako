@@ -54,28 +54,22 @@ if (!empty($_SESSION['panier'])) {
                 </svg>
             </a>
 
-            <!--Bouton Deconnexion-->
-            <a href="../../../MVC-Pharmacie/Controller/utilisateurController.php?action=deconnecter" class="btn bg-red-500 hover:bg-red-600 text-white py-1 px-3 rounded">
-                Deconnexion
-            </a>
-            
+            <!-- Nom et Déconnexion -->
+            <?php if (isset($_SESSION['user'])): ?>
+                <span class="text-gray-600">Bonjour, <?=$_SESSION['user']['nom']?></span>
+                <a href="../../../MVC-Pharmacie/Controller/utilisateurController.php?action=deconnecter" class="text-gray-600 hover:text-gray-900">Déconnexion</a>
+            <?php else: ?>
+                <a href="../../../../MVC-Pharmacie/View/auth/login.php" class="text-gray-600 hover:text-gray-900">Connexion</a>
+            <?php endif; ?>
         </div>
     </div>
-</header> 
-<br><br><br><br><br>
-<!-- ========================================================================NAVBAR END================================================================================ -->    
+</header>
 
-<body class="bg-gray-100 min-h-screen flex flex-col">
-    <div class="flex-grow">
-        <h1 class="text-center text-3xl font-bold mb-5">Panier</h1>
-        <?php if (isset($_SESSION['error'])): ?>
-            <div class="container mx-auto bg-red-100 text-red-700 p-4 rounded mb-5">
-                <?= $_SESSION['error'] ?>
-                <?php unset($_SESSION['error']); ?>
-            </div>
-        <?php endif; ?>
+<body class="bg-gray-100 min-h-screen pt-20 flex flex-col">
+    <div class="container mx-auto px-6 py-8">
+        <h1 class="text-3xl font-semibold mb-6">Votre Panier</h1>
         <?php if (empty($medicaments)): ?>
-            <p class="text-center">Votre panier est vide</p>
+            <p>Votre panier est vide.</p>
         <?php else: ?>
             <table class="container table-auto mx-auto bg-white rounded shadow">
                 <thead>
@@ -90,11 +84,11 @@ if (!empty($_SESSION['panier'])) {
                     </tr>
                 </thead>
                 <tbody>
-                    <?php foreach($medicaments as $medicament): ?>
+                    <?php foreach ($medicaments as $medicament): ?>
                         <tr>
                             <td class="py-2 px-4 border-b">
-                                <img src="../../uploads/<?=$medicament->photo?>" alt="' + medicament.nom + '" class="w-12 h-12 object-cover rounded">
-                            </td>'
+                                <img src="../../uploads/<?=$medicament->photo?>" alt="<?=$medicament->nom?>" class="w-12 h-12 object-cover rounded">
+                            </td>
                             <td class="border px-4 py-2"><?=$medicament->nom?></td>
                             <td class="border px-4 py-2"><?=$medicament->categorie?></td>
                             <td class="border px-4 py-2"><?=$medicament->prix?> Ar</td>
@@ -113,13 +107,15 @@ if (!empty($_SESSION['panier'])) {
                                 </form>
                             </td>
                         </tr>
-                    <?php endforeach ?>
+                    <?php endforeach; ?>
                 </tbody>
             </table>
             <div class="container mx-auto mt-5 text-right">
                 <p class="text-xl font-bold">Total à payer: <?=$total?> Ariary</p>
                 <br>
-                <a href="" class="btn bg-green-500 hover:bg-green-600 text-white py-2 px-4 rounded">Passer au paiement</a>
+                <form method="POST" action="../../Controller/commandeController.php?action=create">
+                    <button type="submit" class="btn bg-green-500 hover:bg-green-600 text-white py-2 px-4 rounded">Passer la commande</button>
+                </form>
             </div>
         <?php endif; ?>
     </div>

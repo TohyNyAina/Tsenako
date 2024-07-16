@@ -39,7 +39,7 @@ if (!isset($_SESSION['user']) || $_SESSION['user']['role'] !== 'admin') {
                 <a href="../../../../MVC-Pharmacie/View/admin/adminDashboard.php" class="text-gray-600 hover:text-gray-900">Dashboard</a>
                 <a href="../../../../MVC-Pharmacie/View/admin/adminUtilisateurList.php" class="text-gray-600 hover:text-gray-900">Liste des Utilisateurs</a>
                 <a href="../../../../MVC-Pharmacie/Controller/medicamentController.php?action=lister" class="text-gray-600 hover:text-gray-900">Gestion des Medicament</a>
-                <a href="../../../../MVC-Pharmacie/View/admin/commandeListe.php" class="text-gray-600 hover:text-gray-900">Liste des Commande</a>
+                <a href="../../../../MVC-Pharmacie/View/admin/commandeListe.php" class="text-gray-600 hover:text-gray-900">Liste des Commandes</a>
             </div>
 
             <!-- Navbar droite -->
@@ -63,7 +63,7 @@ if (!isset($_SESSION['user']) || $_SESSION['user']['role'] !== 'admin') {
             <!-- Card 1: Total d'argent gagné -->
             <div class="bg-white p-6 rounded-lg shadow-lg">
                 <h2 class="text-2xl font-bold mb-2">Total d'Argent Gagné</h2>
-                <p class="text-3xl text-green-500 font-bold">€12,345</p>
+                <p class="text-3xl text-green-500 font-bold">120.254.000 Ar</p>
             </div>
 
             <!-- Card 2: Nombre total de clients -->
@@ -131,5 +131,6 @@ if (!isset($_SESSION['user']) || $_SESSION['user']['role'] !== 'admin') {
         getTotalClients();
     });
 </script>
+
 
 </html>
