@@ -32,16 +32,27 @@ class CommandeModel
         }
     }
 
-    public function create($medicament, $total_prix, $acheteur, $id_acheteur)
-    {
-        $stmt = $this->db->ds->prepare("INSERT INTO `commande` (`medicament`, `total_prix`, `acheteur`, `id_acheteur`) VALUES (?, ?, ?, ?)");
-        if ($stmt) {
-            $stmt->execute([$medicament, $total_prix, $acheteur, $id_acheteur]);
-            return true;
-        } else {
-            throw new Exception("Failed to prepare the statement.");
-        }
+    public function create($nom_medicament, $total_prix, $acheteur, $id_acheteur)
+{
+    $stmt = $this->db->ds->prepare("INSERT INTO `commande` (`medicament`, `total_prix`, `acheteur`, `id_acheteur`) VALUES (?, ?, ?, ?)");
+    if ($stmt) {
+        $stmt->execute([$nom_medicament, $total_prix, $acheteur, $id_acheteur]);
+        return true;
+    } else {
+        throw new Exception("Failed to prepare the statement.");
     }
+}
+
+public function updateMedicamentStock($id_medicament, $quantite_reduite)
+{
+    $stmt = $this->db->ds->prepare("UPDATE `medicament` SET `nombre` = `nombre` - ? WHERE `id` = ?");
+    if ($stmt) {
+        $stmt->execute([$quantite_reduite, $id_medicament]);
+        return true;
+    } else {
+        throw new Exception("Failed to update the stock.");
+    }
+}
 
     public function getByUser($user)
     {

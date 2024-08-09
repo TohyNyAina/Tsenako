@@ -5,6 +5,20 @@ if (!isset($_SESSION['user']) || $_SESSION['user']['role'] !== 'admin') {
     exit();
 }
 ?>
+
+<?php 
+require_once '../../Utils/DB.php';
+
+
+$db = new DB();
+
+
+$sql = "SELECT SUM(total_prix) as total FROM commande";
+$result = $db->ds->query($sql);
+
+
+$totalPrix = $result->fetchColumn();
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -63,7 +77,7 @@ if (!isset($_SESSION['user']) || $_SESSION['user']['role'] !== 'admin') {
             <!-- Card 1: Total d'argent gagné -->
             <div class="bg-white p-6 rounded-lg shadow-lg">
                 <h2 class="text-2xl font-bold mb-2">Total d'Argent Gagné</h2>
-                <p class="text-3xl text-green-500 font-bold">120.254.000 Ar</p>
+                <p class="text-3xl text-green-500 font-bold"><?= number_format($totalPrix, 0, ',', ' ') ?> Ar</p>
             </div>
 
             <!-- Card 2: Nombre total de clients -->

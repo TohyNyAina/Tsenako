@@ -25,16 +25,16 @@ class CommandeController
     public function create()
     {
         session_start();
-
+    
         if (!isset($_SESSION['user'])) {
             echo "Utilisateur non connecté";
             exit();
         }
-
+    
         $user = $_SESSION['user'];
         $medicaments = [];
         $total = 0;
-
+    
         if (!empty($_SESSION['panier'])) {
             $ids = array_keys($_SESSION['panier']);
             $ids = implode(',', $ids);
@@ -42,20 +42,20 @@ class CommandeController
             $sql = "SELECT * FROM medicament WHERE id IN ($ids)";
             $result = $db->ds->query($sql);
             $medicaments = $result->fetchAll(PDO::FETCH_OBJ);
+    
             foreach ($medicaments as $medicament) {
-                $total += $medicament->prix * $_SESSION['panier'][$medicament->id];
+                $quantite = $_SESSION['panier'][$medicament->id];
+                $this->commandeModel->create(
+                    $medicament->nom, // Insert the name of the medicament instead of the ID
+                    $medicament->prix * $quantite,
+                    $user['nom'],
+                    $user['id']
+                );
+                // Reduce the stock
+                $this->commandeModel->updateMedicamentStock($medicament->id, $quantite);
             }
         }
-
-        foreach ($medicaments as $medicament) {
-            $this->commandeModel->create(
-                $medicament->id,
-                $medicament->prix * $_SESSION['panier'][$medicament->id],
-                $user['nom'],
-                $user['id']
-            );
-        }
-
+    
         unset($_SESSION['panier']);
         header('Location:../../MVC-Pharmacie/Controller/commandeController.php?action=list-par-utilisateur&idUtilisateur=' . $user['id']);
     }
