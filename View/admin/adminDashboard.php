@@ -48,18 +48,18 @@ $totalPrix = $result->fetchColumn();
         <div class="container mx-auto px-6 py-4 flex justify-between items-center">
             <!-- Navbar gauche -->
             <div class="flex items-center space-x-3">
-                <img src="../../../../MVC-Pharmacie/assets/img/logo.jpg" alt="Samsung Logo" class="h-12">
-                <p>Pharmacy</p>
-                <a href="../../../../MVC-Pharmacie/View/admin/adminDashboard.php" class="text-gray-600 hover:text-gray-900">Dashboard</a>
-                <a href="../../../../MVC-Pharmacie/View/admin/adminUtilisateurList.php" class="text-gray-600 hover:text-gray-900">Liste des Utilisateurs</a>
-                <a href="../../../../MVC-Pharmacie/Controller/medicamentController.php?action=lister" class="text-gray-600 hover:text-gray-900">Gestion des Medicament</a>
-                <a href="../../../../MVC-Pharmacie/View/admin/commandeListe.php" class="text-gray-600 hover:text-gray-900">Liste des Commandes</a>
+                <img src="../../../../Tsenako/assets/img/Tsenako1.png" alt="Samsung Logo" class="h-12">
+                
+                <a href="../../../../Tsenako/View/admin/adminDashboard.php" class="text-gray-600 hover:text-gray-900">Dashboard</a>
+                <a href="../../../../Tsenako/View/admin/adminUtilisateurList.php" class="text-gray-600 hover:text-gray-900">Liste des Utilisateurs</a>
+                <a href="../../../../Tsenako/Controller/produitController.php?action=lister" class="text-gray-600 hover:text-gray-900">Gestion des Produits</a>
+                <a href="../../../../Tsenako/View/admin/commandeListe.php" class="text-gray-600 hover:text-gray-900">Liste des Commandes</a>
             </div>
 
             <!-- Navbar droite -->
             <div class="flex items-center space-x-3">
                 <!--Bouton Deconnexion-->
-                <a href="../../../MVC-Pharmacie/Controller/utilisateurController.php?action=deconnecter" class="btn bg-red-500 hover:bg-red-600 text-white py-1 px-3 rounded">
+                <a href="../../../Tsenako/Controller/utilisateurController.php?action=deconnecter" class="btn bg-red-500 hover:bg-red-600 text-white py-1 px-3 rounded">
                     Deconnexion
                 </a>
             </div>
@@ -95,14 +95,11 @@ $totalPrix = $result->fetchColumn();
     </main>
 
     <!-- =====================================================================FOOTER========================================================================================= -->
-    <footer class="bg-green-900 py-12 mt-auto">
+    <footer class="bg-purple-900 py-12 mt-auto">
         <div class="container mx-auto px-6">
             <div class="md:flex md:items-center md:justify-between">
-                <div class="flex justify-center md:order-2">
-                    <a href="../../View//client/medicament.php" class="text-white hover:text-gray-900 mx-3">Boutique</a>
-                </div>
                 <div class="text-center md:text-right md:order-1">
-                    <p class="text-white">Pharmacy &copy; 2024. Tous droits réservés.</p>
+                    <p class="text-white">Tsenako &copy; 2024. Tous droits réservés.</p>
                 </div>
             </div>
         </div>
@@ -114,7 +111,7 @@ $totalPrix = $result->fetchColumn();
     document.addEventListener('DOMContentLoaded', function() {
         // Fonction AJAX pour récupérer le nombre total de produits en stock
         function getTotalProducts() {
-            fetch('../../../../MVC-Pharmacie/Controller/medicamentController.php?action=totalNombre')
+            fetch('../../../../Tsenako/Controller/produitController.php?action=totalNombre')
                 .then(response => response.json())
                 .then(data => {
                     // Mettre à jour l'élément HTML avec le nombre total récupéré
@@ -132,7 +129,7 @@ $totalPrix = $result->fetchColumn();
     document.addEventListener('DOMContentLoaded', function() {
         // Fonction AJAX pour récupérer le nombre total de clients
         function getTotalClients() {
-            fetch('../../../../MVC-Pharmacie/Controller/utilisateurController.php?action=totalClients')
+            fetch('../../../../Tsenako/Controller/utilisateurController.php?action=totalClients')
                 .then(response => response.json())
                 .then(data => {
                     // Mettre à jour l'élément HTML avec le nombre total récupéré

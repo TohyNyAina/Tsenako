@@ -8,6 +8,6 @@ if (isset($_GET['id'])) {
         $_SESSION['panier'][$id]++;
     }
     else $_SESSION['panier'][$id] = 1;
-    header('Location: /MVC-Pharmacie/View/client/medicament.php');
+    header('Location: /Tsenako/View/client/produit.php');
     exit();
 }

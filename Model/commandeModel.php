@@ -32,20 +32,20 @@ class CommandeModel
         }
     }
 
-    public function create($nom_medicament, $total_prix, $acheteur, $id_acheteur)
+    public function create($nom_produit, $total_prix, $acheteur, $id_acheteur)
 {
-    $stmt = $this->db->ds->prepare("INSERT INTO `commande` (`medicament`, `total_prix`, `acheteur`, `id_acheteur`) VALUES (?, ?, ?, ?)");
+    $stmt = $this->db->ds->prepare("INSERT INTO `commande` (`produit`, `total_prix`, `acheteur`, `id_acheteur`) VALUES (?, ?, ?, ?)");
     if ($stmt) {
-        $stmt->execute([$nom_medicament, $total_prix, $acheteur, $id_acheteur]);
+        $stmt->execute([$nom_produit, $total_prix, $acheteur, $id_acheteur]);
         return true;
     } else {
         throw new Exception("Failed to prepare the statement.");
     }
 }
 
-public function updateMedicamentStock($id_medicament, $quantite_reduite)
+public function updateProduitStock($id_medicament, $quantite_reduite)
 {
-    $stmt = $this->db->ds->prepare("UPDATE `medicament` SET `nombre` = `nombre` - ? WHERE `id` = ?");
+    $stmt = $this->db->ds->prepare("UPDATE `produit` SET `nombre` = `nombre` - ? WHERE `id` = ?");
     if ($stmt) {
         $stmt->execute([$quantite_reduite, $id_medicament]);
         return true;

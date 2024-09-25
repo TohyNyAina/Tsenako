@@ -1,10 +1,11 @@
 <?php
+
 class DB
 {
     private $host = "localhost";
     private $user = "root";
     private $pass = "";
-    private $dbname = "pharmacie";
+    private $dbname = "tsenako";
     public $ds;
     public function __construct()
     {

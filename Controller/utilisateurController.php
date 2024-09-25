@@ -18,13 +18,13 @@ class UtilisateurController
         if ($user) {
             $_SESSION['user'] = $user;
             if ($user['role'] === 'admin') {
-                header('Location: ../../MVC-Pharmacie/View/admin/adminDashboard.php'); // Rediriger vers le tableau de bord admin
+                header('Location: ../../Tsenako/View/admin/adminDashboard.php'); // Rediriger vers le tableau de bord admin
             } else {
-                header('Location: ../../MVC-Pharmacie/View/client/medicament.php'); // Rediriger vers le tableau de bord client
+                header('Location: ../../Tsenako/View/client/produit.php'); // Rediriger vers le tableau de bord client
             }
             exit();
         } else {
-            header('Location: ../../MVC-Pharmacie/View/login.php?error=auth_failed'); // Rediriger avec erreur d'authentification
+            header('Location: ../../Tsenako/View/login.php?error=auth_failed'); // Rediriger avec erreur d'authentification
             exit();
         }
     }
@@ -32,19 +32,19 @@ class UtilisateurController
     public function inscrire($nom, $email, $password)
     {
         if ($this->model->isEmailUsed($email)) {
-            header('Location: ../../MVC-Pharmacie/View/register.php?error=email_used');
+            header('Location: ../../Tsenako/View/register.php?error=email_used');
             exit();
         }
 
         $this->model->Inscrire($nom, $email, $password); // Le nom est maintenant passé à la méthode Inscrire
-        header('Location: ../../MVC-Pharmacie/View/login.php?success=registered');
+        header('Location: ../../Tsenako/View/login.php?success=registered');
         exit();
     }
 
     public function deconnecter()
     {
         session_destroy();
-        header('Location: ../../MVC-Pharmacie/index.php?success=logout');
+        header('Location: ../../Tsenako/index.php?success=logout');
         exit();
     }
 
@@ -73,7 +73,7 @@ class UtilisateurController
     public function redirectIfNotLoggedIn()
     {
         if (!$this->checkLoggedIn()) {
-            header('Location: ../../MVC-Pharmacie/index.php');
+            header('Location: ../../Tsenako/index.php');
             exit();
         }
     }
@@ -81,7 +81,7 @@ class UtilisateurController
     public function redirectIfNotAdmin()
     {
         if (!$this->checkRole('admin')) {
-            header('Location: ../../MVC-Pharmacie/index.php');
+            header('Location: ../../Tsenako/index.php');
             exit();
         }
     }
@@ -89,7 +89,7 @@ class UtilisateurController
     public function redirectIfNotClient()
     {
         if (!$this->checkRole('client')) {
-            header('Location: ../../MVC-Pharmacie/index.php');
+            header('Location: ../../Tsenako/index.php');
             exit();
         }
     }
@@ -117,7 +117,7 @@ switch ($action) {
         $controller->redirectIfNotLoggedIn();
         $controller->redirectIfNotAdmin();
         $users = $controller->getUsers();
-        include '../../MVC-Pharmacie/View/admin/listUsers.php';
+        include '../../Tsenako/View/admin/listUsers.php';
         break;
     case 'getUsers':
         $controller->redirectIfNotLoggedIn();
@@ -133,25 +133,25 @@ switch ($action) {
     case 'commandeListe':
         $controller->redirectIfNotLoggedIn();
         $controller->redirectIfNotAdmin();
-        include '../../MVC-Pharmacie/View/admin/commandeListe.php';
+        include '../../Tsenako/View/admin/commandeListe.php';
         break;
-    case 'addMedicament':
+    case 'addProduit':
         $controller->redirectIfNotLoggedIn();
         $controller->redirectIfNotAdmin();
-        include '../../MVC-Pharmacie/Controller/medicamentController.php?action=add';
+        include '../../Tsenako/Controller/produitController.php?action=add';
         break;
-    case 'editMedicament':
+    case 'editProduit':
         $controller->redirectIfNotLoggedIn();
         $controller->redirectIfNotAdmin();
         break;
-    case 'medicament':
+    case 'produit':
         $controller->redirectIfNotLoggedIn();
         if ($controller->checkRole('admin')) {
-            include '../../MVC-Pharmacie/View/admin/adminDashboard.php';
+            include '../../Tsenako/View/admin/adminDashboard.php';
         } elseif ($controller->checkRole('client')) {
-            include '../../MVC-Pharmacie/View/client/medicament.php';
+            include '../../Tsenako/View/client/produit.php';
         } else {
-            header('Location: ../../MVC-Pharmacie/index.php');
+            header('Location: ../../Tsenako/index.php');
             exit();
         }
         break;
@@ -164,16 +164,16 @@ switch ($action) {
     case 'panier':
         $controller->redirectIfNotLoggedIn();
         $controller->redirectIfNotClient();
-        include '../../MVC-Pharmacie/View/client/panier.php';
+        include '../../Tsenako/View/client/panier.php';
         break;
     default:
         $controller->redirectIfNotLoggedIn();
         if ($controller->checkRole('admin')) {
-            header('Location: ../../MVC-Pharmacie/View/admin/adminDashboard.php');
+            header('Location: ../../Tsenako/View/admin/adminDashboard.php');
         } elseif ($controller->checkRole('client')) {
-            header('Location: ../../MVC-Pharmacie/View/client/medicament.php');
+            header('Location: ../../Tsenako/View/client/produit.php');
         } else {
-            header('Location: ../../MVC-Pharmacie/index.php');
+            header('Location: ../../Tsenako/index.php');
             exit();
         }
         break;

@@ -7,7 +7,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
     $quantity = intval($_POST['quantity']);
 
     $db = new DB();
-    $sql = "SELECT nom, nombre FROM medicament WHERE id = :id";
+    $sql = "SELECT nom, nombre FROM produit WHERE id = :id";
     $stmt = $db->ds->prepare($sql);
     $stmt->execute(['id' => $id]);
     $medicament = $stmt->fetch(PDO::FETCH_OBJ);
@@ -21,6 +21,6 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
             $_SESSION['panier'][$id] = $quantity;
         }
     }
-    header('Location: /MVC-Pharmacie/View/client/panier.php');
+    header('Location: /Tsenako/View/client/panier.php');
     exit();
 }

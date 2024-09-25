@@ -16,7 +16,7 @@ if (!isset($_SESSION['user']) || $_SESSION['user']['role'] !== 'admin') {
     <script>
         function loadUsers() {
             $.ajax({
-                url: '../../../MVC-Pharmacie/Controller/utilisateurController.php?action=getUsers',
+                url: '../../../Tsenako/Controller/utilisateurController.php?action=getUsers',
                 method: 'GET',
                 dataType: 'json',
                 success: function (data) {
@@ -39,7 +39,7 @@ if (!isset($_SESSION['user']) || $_SESSION['user']['role'] !== 'admin') {
         function deleteUser(userId) {
             if (confirm('Voulez-vous vraiment supprimer cet utilisateur ?')) {
                 $.ajax({
-                    url: '../../../MVC-Pharmacie/Controller/utilisateurController.php?action=supprimer',
+                    url: '../../../Tsenako/Controller/utilisateurController.php?action=supprimer',
                     method: 'POST',
                     data: { id: userId },
                     dataType: 'json',
@@ -67,18 +67,18 @@ if (!isset($_SESSION['user']) || $_SESSION['user']['role'] !== 'admin') {
         <div class="container mx-auto px-6 py-4 flex justify-between items-center">
             <!-- Navbar gauche -->
             <div class="flex items-center space-x-3">
-                <img src="../../../../MVC-Pharmacie/assets/img/logo.jpg" alt="Samsung Logo" class="h-12">
-                <p>Pharmacy</p>
-                <a href="../../../../MVC-Pharmacie/View/admin/adminDashboard.php" class="text-gray-600 hover:text-gray-900">Dashboard</a>
-                <a href="../../../../MVC-Pharmacie/View/admin/adminUtilisateurList.php" class="text-gray-600 hover:text-gray-900">Liste des Utilisateurs</a>
-                <a href="../../../../MVC-Pharmacie/Controller/medicamentController.php?action=lister" class="text-gray-600 hover:text-gray-900">Gestion des Medicament</a>
-                <a href="../../../../MVC-Pharmacie/View/admin/commandeListe.php" class="text-gray-600 hover:text-gray-900">Liste des Commande</a>
+                <img src="../../../../Tsenako/assets/img/Tsenako1.png" alt="Samsung Logo" class="h-12">
+                
+                <a href="../../../../Tsenako/View/admin/adminDashboard.php" class="text-gray-600 hover:text-gray-900">Dashboard</a>
+                <a href="../../../../Tsenako/View/admin/adminUtilisateurList.php" class="text-gray-600 hover:text-gray-900">Liste des Utilisateurs</a>
+                <a href="../../../../Tsenako/Controller/produitController.php?action=lister" class="text-gray-600 hover:text-gray-900">Gestion des Produits</a>
+                <a href="../../../../Tsenako/View/admin/commandeListe.php" class="text-gray-600 hover:text-gray-900">Liste des Commande</a>
             </div>
 
             <!-- Navbar droite -->
             <div class="flex items-center space-x-3">
                 <!--Bouton Deconnexion-->
-                <a href="../../../MVC-Pharmacie/Controller/utilisateurController.php?action=deconnecter" class="btn bg-red-500 hover:bg-red-600 text-white py-1 px-3 rounded">
+                <a href="../../../Tsenako/Controller/utilisateurController.php?action=deconnecter" class="btn bg-red-500 hover:bg-red-600 text-white py-1 px-3 rounded">
                     Deconnexion
                 </a>
             </div>

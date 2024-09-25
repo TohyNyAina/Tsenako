@@ -32,32 +32,32 @@ class CommandeController
         }
     
         $user = $_SESSION['user'];
-        $medicaments = [];
+        $produits = [];
         $total = 0;
     
         if (!empty($_SESSION['panier'])) {
             $ids = array_keys($_SESSION['panier']);
             $ids = implode(',', $ids);
             $db = new DB();
-            $sql = "SELECT * FROM medicament WHERE id IN ($ids)";
+            $sql = "SELECT * FROM produit WHERE id IN ($ids)";
             $result = $db->ds->query($sql);
-            $medicaments = $result->fetchAll(PDO::FETCH_OBJ);
+            $produits = $result->fetchAll(PDO::FETCH_OBJ);
     
-            foreach ($medicaments as $medicament) {
-                $quantite = $_SESSION['panier'][$medicament->id];
+            foreach ($produits as $produit) {
+                $quantite = $_SESSION['panier'][$produit->id];
                 $this->commandeModel->create(
-                    $medicament->nom, // Insert the name of the medicament instead of the ID
-                    $medicament->prix * $quantite,
+                    $produit->nom, 
+                    $produit->prix * $quantite,
                     $user['nom'],
                     $user['id']
                 );
                 // Reduce the stock
-                $this->commandeModel->updateMedicamentStock($medicament->id, $quantite);
+                $this->commandeModel->updateProduitStock($produit->id, $quantite);
             }
         }
     
         unset($_SESSION['panier']);
-        header('Location:../../MVC-Pharmacie/Controller/commandeController.php?action=list-par-utilisateur&idUtilisateur=' . $user['id']);
+        header('Location:../../Tsenako/Controller/commandeController.php?action=list-par-utilisateur&idUtilisateur=' . $user['id']);
     }
 
     public function listByUser($idUtilisateur)
@@ -107,7 +107,7 @@ switch ($action) {
     case 'list-par-utilisateur':
         $idUtilisateur = $_GET['idUtilisateur'];
         $commandes = $controller->listByUser($idUtilisateur);
-        include '../View/client/medicament.php';
+        include '../View/client/produit.php';
         break;
     case 'get-all':
         $controller->getAll();

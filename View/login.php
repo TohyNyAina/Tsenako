@@ -3,8 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Inscription</title>
-    <link href="../../MVC-Pharmacie/assets/css/login.css" rel="stylesheet">
+    <title>Connexion</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <script>
         function validateForm() {
@@ -28,15 +27,14 @@
         <div class="container mx-auto px-6 py-4 flex justify-between items-center">
             <!-- Navbar gauche -->
             <div class="flex items-center space-x-3">
-                <img src="../../../../MVC-Pharmacie/assets/img/logo.jpg" alt="Samsung Logo" class="h-12">
-                <p>Pharmacy</p>
+                <img src="../../../../Tsenako/assets/img/tsenako1.png" alt="Samsung Logo" class="h-12">
                 <a href="../index.php" class="text-gray-600 hover:text-gray-900">Boutique</a>
             </div>
 
             <!-- Navbar droite -->
             <div class="flex items-center space-x-3">
                 <!--Bouton Deconnexion-->
-                <a href="../../../MVC-Pharmacie/View/login.php" class="btn bg-blue-500 hover:bg-red-600 text-white py-1 px-3 rounded">
+                <a href="../../../Tsenako/View/login.php" class="btn bg-blue-500 hover:bg-red-600 text-white py-1 px-3 rounded">
                     Connexion
                 </a>
             </div>
@@ -44,28 +42,53 @@
     </header> <br><br>
     <!-- =================================================================NAVBAR END ========================================================================= -->
 
-    <div id="rehetra">
-        <br><br>
-        <h1>Connexion</h1>
-        <!-- <a href="../Controller/utilisateurController.php?action=prem" class="btn btn-success mb-4">Revenir à la liste des medicaments</a> -->
-        <form action="../../MVC-Pharmacie/Controller/utilisateurController.php?action=connecter" method="post" enctype="multipart/form-data" onsubmit="return validateForm()">
-            <div class="boite">
-                <input type="email" name="email" class="case" required>
-                <label for="nom">Adresse Email</label>
+    <div class="bg-gray-100">
+        <div class="grid md:grid-cols-2 gap-4 md:gap-8 xl:gap-20 md:items-center">
+            <div class="container mx-auto mt-5">
+                <br><br>
+                <form action="../../Tsenako/Controller/utilisateurController.php?action=connecter" method="post" enctype="multipart/form-data" onsubmit="return validateForm()" class="bg-white p-6 rounded shadow-md">
+                    <div class="mb-4">
+                        <h1 class="block text-gray-700 font-bold mb-2">CONNEXION</h1> <br><br>
+                        <label class="block text-gray-700 font-bold mb-2">Adresse Email</label>
+                        <div class="relative">
+                            <input
+                                type="email"
+                                name="email"
+                                class="w-full px-3 py-2 border border-gray-300 rounded"
+                                required>
+                        </div>
+                    </div>
+                    <div class="mb-4">
+                        <label class="block text-gray-700 font-bold mb-2">Mot de passe</label>
+                        <div class="relative">
+                            <input
+                                type="password"
+                                name="mdp"
+                                class="w-full px-3 py-2 border border-gray-300 rounded"
+                                required>
+                        </div>
+                    </div>
+                    <button
+                        type="submit"
+                        class="bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded">
+                        Se connecter
+                    </button> <br> <br><br>
+                    <p className="text-center text-sm text-gray-500">
+                        Vous n'avez pas de compte?
+                        <a className="underline" href="register.php">
+                            S'inscrire
+                        </a>
+                    </p>
+                </form>
             </div>
-            <div class="boite">
-                <input type="password" name="mdp" class="case" required>
-                <label for="passe">Mot de passe</label>
+            <div class="container mx-auto py-4 px-4">
+                <div class="relative bg-gray-200 p-4 rounded-md">
+                    <img class="w-full rounded-md bg-gray-100" src="../../../Tsenako/assets/img/entana2.gif" alt="Image Description">
+                    <!-- Overlay gris -->
+                    <div class="absolute inset-0 bg-gray-100 opacity-30"></div>
+                </div>
             </div>
-            <div class="seconnecter">
-                <input type="submit" value="Se connecter" class="btn" id="btn">
-            </div>
-
-        </form>
-        <div class="sinscrire">
-            <a href="register.php"><input type="submit" value="S'inscrire" class="btn"></a>
         </div>
-
     </div>
 </body>
 
