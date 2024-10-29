@@ -9,7 +9,7 @@ if (!isset($_SESSION['user']) || $_SESSION['user']['role'] !== 'admin') {
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <title>Ajouter un Médicament</title>
+    <title>Ajouter un Produit</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <script>
         function validateForm() {
@@ -19,10 +19,24 @@ if (!isset($_SESSION['user']) || $_SESSION['user']['role'] !== 'admin') {
             var nombre = document.getElementById('nombre').value;
             var photo = document.getElementById('photo').value;
 
+            // Vérifier si tous les champs sont remplis
             if (nom == "" || prix == "" || categorie == "" || nombre == "" || photo == "") {
                 alert("Veuillez remplir tous les champs.");
                 return false;
             }
+
+            // Vérifier que le nombre est supérieur à 0
+            if (nombre <= 0) {
+                alert("Le nombre de produits doit être supérieur à 0.");
+                return false;
+            }
+
+            // Vérifier que le prix est supérieur à 0
+            if (prix <= 0) {
+                alert("Le prix du produit doit être supérieur à 0.");
+                return false;
+            }
+
             return true;
         }
     </script>
@@ -66,7 +80,7 @@ if (!isset($_SESSION['user']) || $_SESSION['user']['role'] !== 'admin') {
         </div>
         <div class="mb-4">
             <label for="prix" class="block text-gray-700 font-bold mb-2">Prix en Ariary:</label>
-            <input type="number" id="prix" name="prix" class="w-full px-3 py-2 border border-gray-300 rounded">
+            <input type="number" id="prix" name="prix" class="w-full px-3 py-2 border border-gray-300 rounded" min="1">
         </div>
         <div class="mb-4">
             <label for="categorie" class="block text-gray-700 font-bold mb-2">Catégorie:</label>
@@ -84,7 +98,7 @@ if (!isset($_SESSION['user']) || $_SESSION['user']['role'] !== 'admin') {
         </div>
         <div class="mb-4">
             <label for="nombre" class="block text-gray-700 font-bold mb-2">Nombre:</label>
-            <input type="number" id="nombre" name="nombre" class="w-full px-3 py-2 border border-gray-300 rounded">
+            <input type="number" id="nombre" name="nombre" class="w-full px-3 py-2 border border-gray-300 rounded" min="1">
         </div>
         <div class="mb-4">
             <label for="photo" class="block text-gray-700 font-bold mb-2">Photo:</label>
