@@ -49,6 +49,14 @@
                 <form action="../../Tsenako/Controller/utilisateurController.php?action=connecter" method="post" enctype="multipart/form-data" onsubmit="return validateForm()" class="bg-white p-6 rounded shadow-md">
                     <div class="mb-4">
                         <h1 class="block text-gray-700 font-bold mb-2">CONNEXION</h1> <br><br>
+
+                        <!-- Afficher le message d'erreur en cas de connexion échouée -->
+                        <?php if (isset($_GET['error']) && $_GET['error'] == 'auth_failed'): ?>
+                            <div class="mb-4 p-3 bg-red-100 text-red-600 rounded border border-red-500">
+                                Adresse email ou mot de passe incorrect.
+                            </div>
+                        <?php endif; ?>
+
                         <label class="block text-gray-700 font-bold mb-2">Adresse Email</label>
                         <div class="relative">
                             <input
@@ -73,9 +81,9 @@
                         class="bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded">
                         Se connecter
                     </button> <br> <br><br>
-                    <p className="text-center text-sm text-gray-500">
+                    <p class="text-center text-sm text-gray-500">
                         Vous n'avez pas de compte?
-                        <a className="underline" href="register.php">
+                        <a class="underline" href="register.php">
                             S'inscrire
                         </a>
                     </p>
