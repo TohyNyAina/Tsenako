@@ -12,8 +12,10 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
     $stmt->execute(['id' => $id]);
     $medicament = $stmt->fetch(PDO::FETCH_OBJ);
 
-    if ($medicament && $quantity > $medicament->nombre) {
-        $_SESSION['error'] = "Stock insuffisant pour le médicament {$medicament->nom}. Stock disponible : {$medicament->nombre}";
+    if ($quantity < 0) {
+        $_SESSION['error'] = "La quantité ne peut pas être négative.";
+    } elseif ($medicament && $quantity > $medicament->nombre) {
+        $_SESSION['error'] = "Stock insuffisant pour le produit {$medicament->nom}. Stock disponible : {$medicament->nombre}";
     } else {
         if ($quantity < 1) {
             unset($_SESSION['panier'][$id]);

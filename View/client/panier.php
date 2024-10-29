@@ -64,9 +64,18 @@ if (!empty($_SESSION['panier'])) {
 </header>
 
 <body class="bg-gray-100 min-h-screen pt-20 flex flex-col">
-    <div class="container mx-auto px-6 py-8">
+<div class="container mx-auto px-6 py-8">
         <h1 class="text-3xl font-semibold mb-6">Votre Panier</h1>
         <a href="../client/produit.php" class="btn bg-purple-500 hover:bg-purple-600 text-white py-2 px-4 rounded mb-4">Ajouter d'autre Produit</a> <br><br>
+
+        <!-- Affichage des messages d'erreur -->
+        <?php if (isset($_SESSION['error'])): ?>
+            <div class="bg-red-500 text-white p-4 rounded mb-6">
+                <?= $_SESSION['error'] ?>
+            </div>
+            <?php unset($_SESSION['error']); ?>
+        <?php endif; ?>
+
         <?php if (empty($produits)): ?>
             <p>Votre panier est vide.</p>
         <?php else: ?>
@@ -95,7 +104,7 @@ if (!empty($_SESSION['panier'])) {
                                 <form method="POST" action="/Tsenako/View/client/adjust.php">
                                     <input type="hidden" name="id" value="<?=$produit->id?>">
                                     <input type="number" name="quantity" value="<?=$_SESSION['panier'][$produit->id]?>" min="1" class="w-16">
-                                    <input type="submit" value="Enregister" class="btn bg-blue-500 text-white px-2 py-1 rounded">
+                                    <input type="submit" value="Enregistrer la modification" class="btn bg-blue-500 text-white px-2 py-1 rounded">
                                 </form>
                             </td>
                             <td class="border px-4 py-2"><?=($produit->prix * $_SESSION['panier'][$produit->id])?> Ar</td>
