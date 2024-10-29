@@ -14,50 +14,56 @@ if (!isset($_SESSION['user']) || $_SESSION['user']['role'] !== 'admin') {
     <title>Liste des utilisateurs</title>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
-        function loadUsers() {
+    function loadUsers() {
+        $.ajax({
+            url: '../../../Tsenako/Controller/utilisateurController.php?action=getUsers',
+            method: 'GET',
+            dataType: 'json',
+            success: function (data) {
+                let userTable = '';
+                data.forEach(user => {
+                    userTable += `
+                        <tr class="hover:bg-gray-100">
+                            <td class="py-2 px-4 border-b">${user.nom}</td>
+                            <td class="py-2 px-4 border-b">${user.email}</td>
+                            <td class="py-2 px-4 border-b">${user.role}</td>
+                            <td class="py-2 px-4 border-b">
+                                ${user.role !== 'admin' ? 
+                                    `<button class="btn bg-red-500 hover:bg-red-600 text-white py-1 px-3 rounded" onclick="deleteUser(${user.id})">Supprimer</button>` : 
+                                    ''
+                                }
+                            </td>
+                        </tr>
+                    `;
+                });
+                $('#userTableBody').html(userTable);
+            }
+        });
+    }
+
+    function deleteUser(userId) {
+        if (confirm('Voulez-vous vraiment supprimer cet utilisateur ?')) {
             $.ajax({
-                url: '../../../Tsenako/Controller/utilisateurController.php?action=getUsers',
-                method: 'GET',
+                url: '../../../Tsenako/Controller/utilisateurController.php?action=supprimer',
+                method: 'POST',
+                data: { id: userId },
                 dataType: 'json',
-                success: function (data) {
-                    let userTable = '';
-                    data.forEach(user => {
-                        userTable += `
-                            <tr class="hover:bg-gray-100" >
-                                <td class="py-2 px-4 border-b">${user.nom}</td>
-                                <td class="py-2 px-4 border-b">${user.email}</td>
-                                <td class="py-2 px-4 border-b">${user.role}</td>
-                                <td class="py-2 px-4 border-b"><button class="btn bg-red-500 hover:bg-red-600 text-white py-1 px-3 rounded" onclick="deleteUser(${user.id})">Supprimer</button></td>
-                            </tr>
-                        `;
-                    });
-                    $('#userTableBody').html(userTable);
+                success: function (response) {
+                    if (response.success) {
+                        loadUsers();
+                    } else {
+                        alert('Erreur lors de la suppression de l\'utilisateur.');
+                    }
                 }
             });
         }
+    }
 
-        function deleteUser(userId) {
-            if (confirm('Voulez-vous vraiment supprimer cet utilisateur ?')) {
-                $.ajax({
-                    url: '../../../Tsenako/Controller/utilisateurController.php?action=supprimer',
-                    method: 'POST',
-                    data: { id: userId },
-                    dataType: 'json',
-                    success: function (response) {
-                        if (response.success) {
-                            loadUsers();
-                        } else {
-                            alert('Erreur lors de la suppression de l\'utilisateur.');
-                        }
-                    }
-                });
-            }
-        }
+    $(document).ready(function () {
+        loadUsers();
+    });
+</script>
 
-        $(document).ready(function () {
-            loadUsers();
-        });
-    </script>
 </head>
 <body class="bg-gray-100">
 
