@@ -102,18 +102,22 @@ if (isset($_SESSION['panier'])) {
                     success: function(data) {
                         if (data.length > 0) {
                             let html = '';
-                            data.forEach(function(produit) {
+                                data.forEach(function(produit) {
                                 html += '<div class="bg-white p-4 rounded shadow">';
                                 if (produit.photo) {
-                                    html += '<img src="../../../Tsenako/uploads/' + produit.photo + '" alt="' + produit.nom + '" class="w-full h-80 object-cover mb-4">';
+                                     html += '<img src="../../../Tsenako/uploads/' + produit.photo + '" alt="' + produit.nom + '" class="w-full h-80 object-cover mb-4">';
                                 }
                                 html += '<h3 class="text-xl font-bold text-gray-800 mb-4">' + produit.nom + '</h3>';
                                 html += '<p class="text-gray-600 mb-4">' + produit.prix + ' Ar</p>';
-                                html += '<div class="flex justify-between">';
-                                html += `<a href="med.php?id=${produit.id}" class="btn bg-purple-500 hover:bg-purple-600 text-white py-2 px-4 rounded mb-4">Ajouter au panier</a>`;
+                                if (produit.nombre > 0) {
+                                    html += '<div class="flex justify-between">';
+                                    html += `<a href="med.php?id=${produit.id}" class="btn bg-purple-500 hover:bg-purple-600 text-white py-2 px-4 rounded mb-4">Ajouter au panier</a>`;
+                                    html += '</div>';
+                                } else {
+                                    html += '<p class="text-red-600 font-bold">En rupture de stock</p>';
+                                }
                                 html += '</div>';
-                                html += '</div>';
-                            });
+                        });
                             $('#produits-list').html(html);
                         } else {
                             $('#produits-list').html('<p class="text-center">Aucun médicament trouvé.</p>');
