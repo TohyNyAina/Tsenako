@@ -53,5 +53,6 @@ class ProduitModel {
         $sql->execute();
         return $sql->fetchColumn();
     }
+    
 }
 ?>
