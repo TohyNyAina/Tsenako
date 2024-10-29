@@ -11,39 +11,60 @@ if (!isset($_SESSION['user']) || $_SESSION['user']['role'] !== 'admin') {
     <meta charset="UTF-8">
     <title>Modifier un Produit</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <script>
+        function validateForm() {
+            var nom = document.getElementById('nom').value;
+            var prix = document.getElementById('prix').value;
+            var categorie = document.getElementById('categorie').value;
+            var nombre = document.getElementById('nombre').value;
+
+            // Vérification des champs obligatoires
+            if (nom == "" || prix == "" || categorie == "" || nombre == "") {
+                alert("Veuillez remplir tous les champs.");
+                return false;
+            }
+
+            // Vérification que le prix et le nombre sont supérieurs à 0
+            if (prix <= 0) {
+                alert("Le prix doit être supérieur à 0.");
+                return false;
+            }
+            if (nombre <= 0) {
+                alert("Le nombre doit être supérieur à 0.");
+                return false;
+            }
+
+            return true;
+        }
+    </script>
 </head>
 <body class="bg-gray-100">
 
-<!-- =================================================================NAVBAR============================================================================================= -->
-    <!-- Navbar -->
-    <header class="bg-white shadow fixed top-0 left-0 right-0 z-50">
-        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
-            <!-- Navbar gauche -->
-            <div class="flex items-center space-x-3">
-                <img src="../../../../Tsenako/assets/img/Tsenako1.png" alt="Samsung Logo" class="h-12">
-                <a href="../../../../Tsenako/View/admin/adminDashboard.php" class="text-gray-600 hover:text-gray-900">Dashboard</a>
-                <a href="../../../../Tsenako/View/admin/adminUtilisateurList.php" class="text-gray-600 hover:text-gray-900">Liste des Utilisateurs</a>
-                <a href="../../../../Tsenako/Controller/produitController.php?action=lister" class="text-gray-600 hover:text-gray-900">Gestion des Produitst</a>
-                <a href="../../../../Tsenako/View/admin/commandeListe.php" class="text-gray-600 hover:text-gray-900">Liste des Commande</a>
-            </div>
-
-            <!-- Navbar droite -->
-            <div class="flex items-center space-x-3">
-                <!--Bouton Deconnexion-->
-                <a href="../../../Tsenako/Controller/utilisateurController.php?action=deconnecter" class="btn bg-red-500 hover:bg-red-600 text-white py-1 px-3 rounded">
-                    Deconnexion
-                </a>
-            </div>
+<!-- ============================== NAVBAR ============================== -->
+<header class="bg-white shadow fixed top-0 left-0 right-0 z-50">
+    <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+        <div class="flex items-center space-x-3">
+            <img src="../../../../Tsenako/assets/img/Tsenako1.png" alt="Samsung Logo" class="h-12">
+            <a href="../../../../Tsenako/View/admin/adminDashboard.php" class="text-gray-600 hover:text-gray-900">Dashboard</a>
+            <a href="../../../../Tsenako/View/admin/adminUtilisateurList.php" class="text-gray-600 hover:text-gray-900">Liste des Utilisateurs</a>
+            <a href="../../../../Tsenako/Controller/produitController.php?action=lister" class="text-gray-600 hover:text-gray-900">Gestion des Produits</a>
+            <a href="../../../../Tsenako/View/admin/commandeListe.php" class="text-gray-600 hover:text-gray-900">Liste des Commandes</a>
         </div>
-    </header>
-    <br><br><br><br>
-    <!-- =================================================================NAVBAR END======================================================================================== -->
 
+        <div class="flex items-center space-x-3">
+            <a href="../../../Tsenako/Controller/utilisateurController.php?action=deconnecter" class="btn bg-red-500 hover:bg-red-600 text-white py-1 px-3 rounded">
+                Déconnexion
+            </a>
+        </div>
+    </div>
+</header>
+<br><br><br><br>
+<!-- ============================== FORM ============================== -->
 
 <div class="container mx-auto mt-5">
     <h1 class="text-center text-3xl font-bold mb-5">Modifier un Produit</h1>
     <a href="../../Tsenako/Controller/produitController.php?action=lister" class="bg-purple-500 hover:bg-purple-600 text-white py-2 px-4 rounded mb-4 inline-block">Revenir à la liste des Produits</a>
-    <form action="../../Tsenako/Controller/produitController.php?action=modifier&id=<?php echo htmlspecialchars($produit['id']); ?>" method="post" enctype="multipart/form-data" class="bg-white p-6 rounded shadow-md">
+    <form action="../../Tsenako/Controller/produitController.php?action=modifier&id=<?php echo htmlspecialchars($produit['id']); ?>" method="post" enctype="multipart/form-data" onsubmit="return validateForm()" class="bg-white p-6 rounded shadow-md">
         <input type="hidden" name="id" value="<?php echo htmlspecialchars($produit['id']); ?>">
         <div class="mb-4">
             <label for="nom" class="block text-gray-700 font-bold mb-2">Nom:</label>
@@ -51,10 +72,10 @@ if (!isset($_SESSION['user']) || $_SESSION['user']['role'] !== 'admin') {
         </div>
         <div class="mb-4">
             <label for="prix" class="block text-gray-700 font-bold mb-2">Prix en Ariary:</label>
-            <input type="number" id="prix" name="prix" class="w-full px-3 py-2 border border-gray-300 rounded" value="<?php echo htmlspecialchars($produit['prix']); ?>">
+            <input type="number" id="prix" name="prix" class="w-full px-3 py-2 border border-gray-300 rounded" value="<?php echo htmlspecialchars($produit['prix']); ?>" min="1">
         </div>
         <div class="mb-4">
-            <label for="categorie" class="block text-gray-700 font-bold mb-2">Categorie:</label>
+            <label for="categorie" class="block text-gray-700 font-bold mb-2">Catégorie:</label>
             <select id="categorie" name="categorie" class="w-full px-3 py-2 border border-gray-300 rounded">
                 <option value="Cuisine" <?php if ($produit['categorie'] == 'Cuisine') echo 'selected'; ?>>Cuisine</option>
                 <option value="Nouriture" <?php if ($produit['categorie'] == 'Nouriture') echo 'selected'; ?>>Nouriture</option>
@@ -69,7 +90,7 @@ if (!isset($_SESSION['user']) || $_SESSION['user']['role'] !== 'admin') {
         </div>
         <div class="mb-4">
             <label for="nombre" class="block text-gray-700 font-bold mb-2">Nombre:</label>
-            <input type="number" id="nombre" name="nombre" class="w-full px-3 py-2 border border-gray-300 rounded" value="<?php echo htmlspecialchars($produit['nombre']); ?>">
+            <input type="number" id="nombre" name="nombre" class="w-full px-3 py-2 border border-gray-300 rounded" value="<?php echo htmlspecialchars($produit['nombre']); ?>" min="1">
         </div>
         <div class="mb-4">
             <label for="photo" class="block text-gray-700 font-bold mb-2">Photo:</label>

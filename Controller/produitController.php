@@ -22,16 +22,20 @@ class ProduitController {
     }
 
     public function modifier($nom, $prix, $categorie, $nombre, $photo, $id) {
-        // Gestion de l'upload de la photo
         $photoName = '';
+    
         if ($photo['name']) {
             $targetDir = "../uploads/";
             $photoName = basename($photo["name"]);
             $targetFilePath = $targetDir . $photoName;
             move_uploaded_file($photo["tmp_name"], $targetFilePath);
+        } else {
+            $produit = $this->model->findProduitById($id); 
+            $photoName = $produit['photo']; 
         }
         return $this->model->modifier($nom, $prix, $categorie, $nombre, $photoName, $id);
     }
+    
 
     public function supprimer($id) {
         return $this->model->supprimer($id);
